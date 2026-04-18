@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- CSS -->
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+        <style type="text/tailwindcss">
+            @layer base {
+                html {
+                    font-family: var(--font-primary);
+                    color: var(--color-primary);
+                    font-weight: var(--font-weight);
+                }
+            }
+            @theme {
+                --font-primary: 'Satoshi', sans-serif;
+                --font-secondary: 'Integral CF', sans-serif;
+                --color-primary: #000;
+
+                --font-weight: 400;
+
+                --spacing-container-x: 6.25rem;
+
+                --color-muted: rgba(0, 0, 0, 0.6);
+                --color-divider: rgba(0, 0, 0, 0.1);
+                --color-bg-gray: #f0f0f0;
+                --color-price-original: #00000066;
+            }
+            @layer components {
+                .button-auth {
+                    @apply flex h-10 items-center justify-center rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium hover:bg-gray-100 transition-colors;
+                }
+
+                .input-auth {
+                    @apply flex h-10 w-full rounded-md border border-gray-200 bg-white px-3 py-2 text-sm;
+                }
+            }
+        </style>
+
+        <!-- Icon -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+            integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- https://ui.shadcn.com/blocks/login -->
+        <section
+            class="min-h-screen bg-gray-50 flex items-center justify-center p-4"
+        >
+            <div
+                class="w-full max-w-[400px] bg-white rounded-xl border border-gray-200 shadow-sm p-8"
+            >
+                <div class="text-center mb-8">
+                    <h1 class="text-2xl font-bold text-gray-900">
+                        Welcome back
+                    </h1>
+                    <p class="text-sm text-gray-500 mt-2">
+                        Login to your Acme Inc account
+                    </p>
+                </div>
+
+                <form class="space-y-4">
+                    <div class="space-y-2">
+                        <label for="email" class="text-sm font-medium">
+                            Email
+                        </label>
+                        <input
+                            id="email"
+                            type="email"
+                            placeholder="example@gmail.com"
+                            class="input-auth placeholder:text-gray-500"
+                        />
+                    </div>
+
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between">
+                            <label
+                                for="password"
+                                class="text-sm font-medium leading-none"
+                            >
+                                Password
+                            </label>
+                            <a
+                                href="#"
+                                class="text-sm text-gray-900 hover:underline"
+                            >
+                                Forgot your password?
+                            </a>
+                        </div>
+                        <input
+                            id="password"
+                            type="password"
+                            class="input-auth"
+                        />
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="w-full h-10 inline-flex items-center justify-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-gray-50 mt-2"
+                    >
+                        Login
+                    </button>
+                </form>
+
+                <div class="relative my-8">
+                    <div class="absolute inset-0 flex items-center">
+                        <span class="w-full border-t border-gray-200"></span>
+                    </div>
+                    <div class="relative flex justify-center text-xs uppercase">
+                        <span class="bg-white px-2 text-gray-500"
+                            >Or continue with</span
+                        >
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 mb-8">
+                    <button class="button-auth">
+                        <i class="fa-brands fa-github text-lg"></i>
+                    </button>
+                    <button class="button-auth">
+                        <i class="fa-brands fa-google text-base"></i>
+                    </button>
+                </div>
+
+                <div class="text-center text-sm text-gray-500">
+                    Don't have an account?
+                    <a
+                        href="/signup.html"
+                        class="font-medium text-gray-900 underline hover:text-gray-700"
+                    >
+                        Sign up
+                    </a>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

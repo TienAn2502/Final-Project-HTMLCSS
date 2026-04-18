@@ -1,0 +1,948 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Fonts -->
+        <link href="https://fonts.cdnfonts.com/css/satoshi" rel="stylesheet" />
+        <link
+            href="https://db.onlinewebfonts.com/c/f1fcc5aed1e20fc0cdb9f8a7573625bd?family=Integral+CF+Regular"
+            rel="stylesheet"
+        />
+
+        <!-- CSS -->
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+        <style type="text/tailwindcss">
+            @layer base {
+                @font-face {
+                    font-family: 'Integral CF';
+                    src: url('/assets/fonts/IntegralCF-Bold.woff')
+                        format('woff2');
+                    font-weight: bold;
+                    font-style: normal;
+                    font-display: swap;
+                }
+                button {
+                    @apply cursor-pointer;
+                }
+                input {
+                    @apply outline-none;
+                }
+                li {
+                    @apply list-none;
+                }
+                html {
+                    font-family: var(--font-primary);
+                    color: var(--color-primary);
+                    font-weight: var(--font-weight);
+                }
+            }
+            @theme {
+                --font-primary: 'Satoshi', sans-serif;
+                --font-secondary: 'Integral CF', sans-serif;
+                --color-primary: #000;
+
+                --font-weight: 400;
+
+                --spacing-container-x: 6.25rem;
+
+                --color-muted: rgba(0, 0, 0, 0.6);
+                --color-divider: rgba(0, 0, 0, 0.1);
+                --color-bg-gray: #f0f0f0;
+                --color-price-original: #00000066;
+                --radius-standard: 3.875rem;
+            }
+
+            @layer components {
+                .social-icon {
+                    @apply bg-white border border-black/20 rounded-full w-7 h-7 flex items-center justify-center transition-all duration-300 cursor-pointer;
+
+                    & i {
+                        @apply text-black transition-colors duration-300;
+                    }
+                }
+
+                .heading-section {
+                    @apply font-[family-name:var(--font-secondary)] font-bold uppercase;
+                }
+
+                .section-container {
+                    @apply px-4 xl:px-[6.25rem];
+                }
+
+                .footer-link-group {
+                    @apply flex flex-col gap-4 row-span-2;
+
+                    & p {
+                        @apply font-medium;
+                    }
+
+                    & ul {
+                        @apply text-sm text-muted;
+                    }
+                }
+
+                .product-price-group {
+                    @apply flex text-xl xl:text-2xl leading-none items-center;
+
+                    & .badge-discount {
+                        @apply rounded-[3.875rem] bg-[#FF33331A] py-[0.38rem]  text-[#FF3333] text-center font-medium;
+                    }
+
+                    & .origin-price {
+                        @apply text-price-original font-bold line-through;
+                    }
+                }
+
+                .product-card-img {
+                    @apply w-full rounded-[0.389rem];
+                }
+
+                .divider {
+                    @apply w-full h-[0.0625rem] bg-divider;
+                }
+
+                .border-base {
+                    @apply border border-black/10;
+                }
+
+                .filter-container {
+                    @apply pt-5 pr-[1.12rem] pb-[1.56rem] pl-[1.19rem];
+                }
+
+                .filter-label {
+                    @apply flex items-center justify-between;
+
+                    & > p {
+                        @apply text-xl font-bold;
+                    }
+                }
+
+                .transition {
+                    @apply transition-all duration-500 ease-in-out;
+                }
+
+                .size {
+                    @apply px-5 py-[0.62rem] rounded-standard bg-bg-gray text-sm text-muted cursor-pointer;
+
+                    &.active {
+                        @apply text-white bg-black;
+                    }
+                }
+
+                .color-select {
+                    @apply rounded-full w-[2.3rem] h-[2.3rem] border border-[#00000033];
+                }
+            }
+        </style>
+
+        <!-- Icon -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+            integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- Overlay -->
+        <div
+            class="fixed hidden transition inset-0 bg-black opacity-40 z-40 overlay"
+        ></div>
+        <section
+            class="bg-black px-[2.78rem] py-2 text-xs max-w-full text-center xl:flex xl:pl-136 xl:pr-25 xl:gap-[26.56rem] xl:text-sm"
+        >
+            <p class="text-white">
+                Sign up and get 20% off to your first order.
+                <a href="" class="underline font-medium">Sign Up Now</a>
+            </p>
+
+            <span class="hidden cursor-pointer xl:block">
+                <i class="fa-solid fa-x text-white"></i>
+            </span>
+        </section>
+
+        <header
+            class="flex justify-between xl:gap-10 xl:items-center py-[1.44rem] section-container xl:py-9"
+        >
+            <div class="flex gap-[1.16rem]">
+                <img
+                    class="xl:hidden hamburger"
+                    src="/assets/imgs/icons/hamburger.svg"
+                    alt=""
+                />
+                <h1 class="font-bold xl:text-[2rem] text-3xl">
+                    <a href="/">SHOP.CO</a>
+                </h1>
+            </div>
+
+            <ul class="gap-6 hidden xl:flex">
+                <li>
+                    <a
+                        href="#"
+                        class="flex items-center gap-1 text-base text-black"
+                    >
+                        Shop
+                        <img
+                            src="/assets/imgs/icons/arrow-down.svg"
+                            alt="arrow"
+                            class="w-3 h-3"
+                        />
+                    </a>
+                </li>
+                <li><a href="">On Sale</a></li>
+                <li><a href="">New Arrivals</a></li>
+                <li><a href="">Brands</a></li>
+            </ul>
+
+            <form
+                action=""
+                method="GET"
+                class="hidden xl:flex rounded-[3.875rem] bg-bg-gray px-4 py-3 gap-3 flex-2"
+            >
+                <img src="/assets/imgs/icons/search.svg" alt="" />
+                <input
+                    class="w-full"
+                    type="text"
+                    placeholder="Search for products..."
+                />
+            </form>
+
+            <div class="flex xl:gap-[0.88rem] gap-3 items-center">
+                <img
+                    class="xl:hidden w-6 h-6"
+                    src="/assets/imgs/icons/search-bold.svg"
+                    alt=""
+                />
+                <a href="/cart.html"
+                    ><img
+                        class="w-6 h-6"
+                        src="/assets/imgs/icons/cart.svg"
+                        alt=""
+                /></a>
+                <img
+                    class="w-6 h-6"
+                    src="/assets/imgs/icons/guess.svg"
+                    alt=""
+                />
+            </div>
+        </header>
+
+        <section
+            class="fixed top-0 left-0 z-50 h-screen w-full bg-white xl:hidden transition -translate-x-full p-6 drawer"
+        >
+            <div class="flex justify-between items-center mb-10">
+                <h2 class="font-bold text-2xl font-integral">SHOP.CO</h2>
+                <label for="menu-toggle" class="cursor-pointer">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="size-6 close-drawer"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M6 18 18 6M6 6l12 12"
+                        />
+                    </svg>
+                </label>
+            </div>
+
+            <ul class="flex flex-col gap-6">
+                <li class="border-black/5 pb-4">
+                    <a
+                        href="#"
+                        class="flex items-center justify-between text-lg text-black"
+                    >
+                        Shop
+                        <img
+                            src="/assets/imgs/icons/arrow-down.svg"
+                            alt="arrow"
+                            class="w-4 h-4 -rotate-90"
+                        />
+                    </a>
+                </li>
+                <li class="border-black/5 pb-4">
+                    <a href="" class="text-lg font-medium">On Sale</a>
+                </li>
+                <li class="border-black/5 pb-4">
+                    <a href="" class="text-lg font-medium">New Arrivals</a>
+                </li>
+                <li class="border-black/5 pb-4">
+                    <a href="" class="text-lg font-medium">Brands</a>
+                </li>
+            </ul>
+        </section>
+        <main class="section-container">
+            <div class="divider"></div>
+            <!-- Breadcrumb -->
+            <div
+                class="flex xl:text-base items-center gap-[0.38rem] mt-5 text-muted text-sm xl:gap-3"
+            >
+                <div class="flex items-center gap-1">
+                    <p>Home</p>
+                    <img src="/assets/imgs/icons/breadcumb.svg" alt="" />
+                </div>
+                <div class="flex items-center gap-1 text-black">
+                    <p>Casual</p>
+                </div>
+            </div>
+
+            <div class="xl:flex xl:gap-[1.31rem] xl:mt-6">
+                <!-- Filter -->
+                <section
+                    class="filter-container left-0 w-full xl:w-auto xl:flex-1 bottom-0 fixed max-h-[89%] bg-white rounded-t-[1.25rem] z-50 overflow-auto translate-y-full transition xl:static xl:translate-y-0 xl:rounded-[1.25rem] xl:border xl:border-[#0000001A]"
+                >
+                    <div class="filter-label">
+                        <p>Filter</p>
+                        <div class="xl:hidden">
+                            <i
+                                class="fa-solid fa-x text-price-original close-filter"
+                            ></i>
+                        </div>
+
+                        <div class="hidden xl:block">
+                            <img
+                                class="hidden xl:block"
+                                src="/assets/imgs/icons/filter.svg"
+                                alt=""
+                            />
+                        </div>
+                    </div>
+
+                    <div class="divider mt-4 mb-5"></div>
+
+                    <section class="flex flex-col gap-5">
+                        <div
+                            class="text-base text-muted flex items-center justify-between"
+                        >
+                            <p>T-shirts</p>
+                            <img
+                                class="w-4 h-4"
+                                src="/assets/imgs/icons/arrow-right-filter.svg"
+                                alt=""
+                            />
+                        </div>
+                        <div
+                            class="text-base text-muted flex items-center justify-between"
+                        >
+                            <p>Shorts</p>
+                            <img
+                                src="/assets/imgs/icons/arrow-right-filter.svg"
+                                alt=""
+                            />
+                        </div>
+                        <div
+                            class="text-base text-muted flex items-center justify-between"
+                        >
+                            <p>Shirts</p>
+                            <img
+                                src="/assets/imgs/icons/arrow-right-filter.svg"
+                                alt=""
+                            />
+                        </div>
+                        <div
+                            class="text-base text-muted flex items-center justify-between"
+                        >
+                            <p>Hoodies</p>
+                            <img
+                                src="/assets/imgs/icons/arrow-right-filter.svg"
+                                alt=""
+                            />
+                        </div>
+                        <div
+                            class="text-base text-muted flex items-center justify-between"
+                        >
+                            <p>Jeans</p>
+                            <img
+                                src="/assets/imgs/icons/arrow-right-filter.svg"
+                                alt=""
+                            />
+                        </div>
+                    </section>
+
+                    <div class="divider mt-6 mb-5"></div>
+
+                    <section>
+                        <div class="filter-label">
+                            <p class="">Price</p>
+                            <img
+                                src="/assets/imgs/icons/arrow-top-filter.svg"
+                                alt=""
+                            />
+                        </div>
+                        <input class="mt-4 w-full" type="range" />
+                    </section>
+
+                    <div class="divider mt-6 mb-5"></div>
+
+                    <section>
+                        <div class="filter-label">
+                            <p class="">Colors</p>
+                            <img
+                                src="/assets/imgs/icons/arrow-top-filter.svg"
+                                alt=""
+                            />
+                        </div>
+
+                        <div class="mt-4 flex gap-4 flex-wrap">
+                            <div
+                                class="bg-[#00C12B] color-select flex justify-center items-center"
+                            >
+                                <img
+                                    class="w-4 h-4"
+                                    src="/assets/imgs/icons/check.svg"
+                                    alt=""
+                                />
+                            </div>
+                            <div class="bg-[#F50606] color-select"></div>
+                            <div class="bg-[#F5DD06] color-select"></div>
+                            <div class="bg-[#F57906] color-select"></div>
+                            <div class="bg-[#06CAF5] color-select"></div>
+                            <div class="bg-[#063AF5] color-select"></div>
+                            <div class="bg-[#7D06F5] color-select"></div>
+                            <div class="bg-[#F506A4] color-select"></div>
+                            <div class="bg-[#FFFFFF] color-select"></div>
+                            <div class="bg-[#000000] color-select"></div>
+                        </div>
+
+                        <div class="divider my-5"></div>
+
+                        <section>
+                            <div class="filter-label">
+                                <p class="">Size</p>
+                                <img
+                                    src="/assets/imgs/icons/arrow-top-filter.svg"
+                                    alt=""
+                                />
+                            </div>
+
+                            <section
+                                class="mt-4 flex items-center gap-2 flex-wrap"
+                            >
+                                <!-- Khi được select sẽ có bg black va text white -->
+                                <div class="size">XX-Small</div>
+                                <div class="size">X-Small</div>
+                                <div class="size">Small</div>
+                                <div class="size active">Medium</div>
+                                <div class="size">Large</div>
+                                <div class="size">X-Large</div>
+                                <div class="size">XX-Large</div>
+                                <div class="size">3X-Large</div>
+                                <div class="size">4X-Large</div>
+                            </section>
+                        </section>
+
+                        <div class="divider my-5"></div>
+
+                        <section>
+                            <div class="filter-label">
+                                <p class="">Dress Style</p>
+                                <img
+                                    src="/assets/imgs/icons/arrow-top-filter.svg"
+                                    alt=""
+                                />
+                            </div>
+                            <section class="flex flex-col gap-5 mt-4">
+                                <div
+                                    class="text-base text-muted flex items-center justify-between "
+                                >
+                                    <p>Casual</p>
+                                    <img
+                                        class="w-4 h-4"
+                                        src="/assets/imgs/icons/arrow-right-filter.svg "
+                                        alt=""
+                                    />
+                                </div>
+                                <div
+                                    class="text-base text-muted flex items-center justify-between"
+                                >
+                                    <p>Formal</p>
+                                    <img
+                                        src="/assets/imgs/icons/arrow-right-filter.svg"
+                                        alt=""
+                                    />
+                                </div>
+                                <div
+                                    class="text-base text-muted flex items-center justify-between"
+                                >
+                                    <p>Party</p>
+                                    <img
+                                        src="/assets/imgs/icons/arrow-right-filter.svg"
+                                        alt=""
+                                    />
+                                </div>
+                                <div
+                                    class="text-base text-muted flex items-center justify-between"
+                                >
+                                    <p>Gym</p>
+                                    <img
+                                        src="/assets/imgs/icons/arrow-right-filter.svg"
+                                        alt=""
+                                    />
+                                </div>
+                            </section>
+                        </section>
+                    </section>
+
+                    <button
+                        class="rounded-standard text-white bg-black py-4 px-[3.38rem] w-full text-sm font-medium mt-10"
+                    >
+                        Apply Filter
+                    </button>
+                </section>
+
+                <section class="xl:flex-4">
+                    <div class="mt-3 xl:mt-0">
+                        <div class="text-2xl xl:text-[2rem] flex justify-between items-center">
+                            <h2 class="font-bold">Casual</h2>
+                            <button
+                                class="w-8 h-8 bg-bg-gray rounded-full items-center justify-center filter flex lg:hidden xl:hidden"
+                            >
+                                <img
+                                    src="/assets/imgs/icons/filter.svg"
+                                    alt=""
+                                />
+                            </button>
+
+                            <div
+                                class="hidden lg:flex xl:flex text-base gap-1 cursor-pointer"
+                            >
+                                <p class="text-muted">
+                                    Sort by:
+                                    <span class="font-medium text-black"
+                                        >Most Popular</span
+                                    >
+                                </p>
+
+                                <img
+                                    src="/assets/imgs/icons/arrow-down.svg"
+                                    alt=""
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <section
+                        class="mt-8 grid grid-cols-2 xl:grid-cols-3 gap-[0.87rem]"
+                    >
+                        <article class="swiper-slide">
+                            <div>
+                                <img
+                                    class="product-card-img"
+                                    src="/assets/imgs/product-img-2.svg"
+                                    alt=""
+                                />
+                            </div>
+
+                            <section
+                                class="mt-[0.62rem] flex flex-col gap-[0.27rem]"
+                            >
+                                <h4
+                                    class="text-base xl:text-xl font-bold truncate"
+                                >
+                                    Vertical Striped Shirt
+                                </h4>
+                                <section
+                                    class="flex items-center gap-[0.69rem]"
+                                >
+                                    <div class="flex gap-[0.28rem]">
+                                        <img
+                                            src="/assets/imgs/icons/star-rate-full.svg"
+                                            alt=""
+                                        />
+                                        <img
+                                            src="/assets/imgs/icons/star-rate-full.svg"
+                                            alt=""
+                                        />
+                                        <img
+                                            src="/assets/imgs/icons/star-rate-full.svg"
+                                            alt=""
+                                        />
+                                        <img
+                                            src="/assets/imgs/icons/star-rate-full.svg"
+                                            alt=""
+                                        />
+                                        <img
+                                            src="/assets/imgs/icons/star-rate-full.svg"
+                                            alt=""
+                                        />
+                                    </div>
+                                    <p class="text-xs xl:text-sm">
+                                        5.0/<span class="text-muted">5</span>
+                                    </p>
+                                </section>
+                                <div
+                                    class="product-price-group gap-[0.31rem] xl:gap-[0.62rem]"
+                                >
+                                    <p class="font-bold">$212</p>
+                                    <p class="origin-price">$235</p>
+                                    <span
+                                        class="badge-discount px-[0.88rem] xl:text-xs text-[0.625rem]"
+                                        >-20%</span
+                                    >
+                                </div>
+                            </section>
+                        </article>
+                        <article class="swiper-slide">
+                            <div>
+                                <img
+                                    class="product-card-img"
+                                    src="/assets/imgs/product-img.svg"
+                                    alt=""
+                                />
+                            </div>
+
+                            <section
+                                class="mt-[0.62rem] flex flex-col gap-[0.27rem]"
+                            >
+                                <h4
+                                    class="text-base xl:text-xl font-bold truncate"
+                                >
+                                    T-Shirt with Tape Details
+                                </h4>
+                                <section
+                                    class="flex items-center gap-[0.69rem]"
+                                >
+                                    <div class="flex gap-[0.28rem]">
+                                        <img
+                                            src="/assets/imgs/icons/star-rate-full.svg"
+                                            alt=""
+                                        />
+                                        <img
+                                            src="/assets/imgs/icons/star-rate-full.svg"
+                                            alt=""
+                                        />
+                                        <img
+                                            src="/assets/imgs/icons/star-rate-full.svg"
+                                            alt=""
+                                        />
+                                        <img
+                                            src="/assets/imgs/icons/star-rate-full.svg"
+                                            alt=""
+                                        />
+                                        <img
+                                            src="/assets/imgs/icons/star-rate-half.svg"
+                                            alt=""
+                                        />
+                                    </div>
+                                    <p class="text-xs xl:text-sm">
+                                        4.5/<span class="text-muted">5</span>
+                                    </p>
+                                </section>
+                                <div class="flex gap-[0.31rem]">
+                                    <p class="text-xl font-bold">$120</p>
+                                </div>
+                            </section>
+                        </article>
+                        <article class="swiper-slide">
+                            <div>
+                                <img
+                                    class="product-card-img"
+                                    src="/assets/imgs/product-img.svg"
+                                    alt=""
+                                />
+                            </div>
+
+                            <section
+                                class="mt-[0.62rem] flex flex-col gap-[0.27rem]"
+                            >
+                                <h4
+                                    class="text-base xl:text-xl font-bold truncate"
+                                >
+                                    T-Shirt with Tape Details
+                                </h4>
+                                <section
+                                    class="flex items-center gap-[0.69rem]"
+                                >
+                                    <div class="flex gap-[0.28rem]">
+                                        <img
+                                            src="/assets/imgs/icons/star-rate-full.svg"
+                                            alt=""
+                                        />
+                                        <img
+                                            src="/assets/imgs/icons/star-rate-full.svg"
+                                            alt=""
+                                        />
+                                        <img
+                                            src="/assets/imgs/icons/star-rate-full.svg"
+                                            alt=""
+                                        />
+                                        <img
+                                            src="/assets/imgs/icons/star-rate-full.svg"
+                                            alt=""
+                                        />
+                                        <img
+                                            src="/assets/imgs/icons/star-rate-half.svg"
+                                            alt=""
+                                        />
+                                    </div>
+                                    <p class="text-xs xl:text-sm">
+                                        4.5/<span class="text-muted">5</span>
+                                    </p>
+                                </section>
+                                <div class="flex gap-[0.31rem]">
+                                    <p class="text-xl font-bold">$120</p>
+                                </div>
+                            </section>
+                        </article>
+                        <article class="swiper-slide">
+                            <div>
+                                <img
+                                    class="product-card-img"
+                                    src="/assets/imgs/product-img.svg"
+                                    alt=""
+                                />
+                            </div>
+
+                            <section
+                                class="mt-[0.62rem] flex flex-col gap-[0.27rem]"
+                            >
+                                <h4
+                                    class="text-base xl:text-xl font-bold truncate"
+                                >
+                                    T-Shirt with Tape Details
+                                </h4>
+                                <section
+                                    class="flex items-center gap-[0.69rem]"
+                                >
+                                    <div class="flex gap-[0.28rem]">
+                                        <img
+                                            src="/assets/imgs/icons/star-rate-full.svg"
+                                            alt=""
+                                        />
+                                        <img
+                                            src="/assets/imgs/icons/star-rate-full.svg"
+                                            alt=""
+                                        />
+                                        <img
+                                            src="/assets/imgs/icons/star-rate-full.svg"
+                                            alt=""
+                                        />
+                                        <img
+                                            src="/assets/imgs/icons/star-rate-full.svg"
+                                            alt=""
+                                        />
+                                        <img
+                                            src="/assets/imgs/icons/star-rate-half.svg"
+                                            alt=""
+                                        />
+                                    </div>
+                                    <p class="text-xs xl:text-sm">
+                                        4.5/<span class="text-muted">5</span>
+                                    </p>
+                                </section>
+                                <div class="flex gap-[0.31rem]">
+                                    <p class="text-xl font-bold">$120</p>
+                                </div>
+                            </section>
+                        </article>
+                    </section>
+                </section>
+            </div>
+
+            <div class="divider mt-6 mb-5"></div>
+
+            <!-- Paginate -->
+            <div class="flex justify-between items-center gap-2">
+                <button
+                    class="rounded-lg flex gap-2 items-center border-base px-[0.88rem] py-2"
+                >
+                    <img
+                        class="w-4 h-4"
+                        src="/assets/imgs/icons/arrow-left.svg"
+                        alt=""
+                    />
+                    <p class="text-xs xl:text-sm">Previous</p>
+                </button>
+                <div class="flex">
+                    <div
+                        class="rounded-lg text-xs font-medium bg-[#0000000F] leading-5 flex items-center justify-center w-9 h-9"
+                    >
+                        1
+                    </div>
+                    <div
+                        class="p-3 leading-5 rounded-lg flex items-center justify-center text-xs font-medium w-9 h-9 text-[#00000080]"
+                    >
+                        2
+                    </div>
+                    <div
+                        class="rounded-lg leading-5 flex items-center justify-center text-xs font-medium w-9 h-9 text-[#00000080]"
+                    >
+                        ...
+                    </div>
+                    <div
+                        class="p-3 leading-5 rounded-lg flex items-center justify-center text-xs font-medium w-9 h-9 text-[#00000080]"
+                    >
+                        9
+                    </div>
+                    <div
+                        class="p-3 leading-5 rounded-lg flex items-center justify-center text-xs font-medium w-9 h-9 text-[#00000080]"
+                    >
+                        10
+                    </div>
+                </div>
+                <button
+                    class="rounded-lg flex items-center gap-2 border-base px-[0.88rem] py-2"
+                >
+                    <p class="text-xs xl:text-sm">Next</p>
+                    <img
+                        class="w-4 h-4"
+                        src="/assets/imgs/icons/arrow-right.svg"
+                        alt=""
+                    />
+                </button>
+            </div>
+
+            <section
+                class="bg-black text-white pt-8 pr-[1.44rem] pb-7 pl-6 rounded-[1.25rem] flex xl:flex-row xl:justify-between flex-col gap-8 xl:px-16 xl:py-9 translate-y-1/2 -mt-[25%] md:-mt-[10%] lg:-mt-[5%] xl:-mt-0"
+            >
+                <h3
+                    class="heading-section font-bold leading-[2.1875rem] text-[2rem] xl:text-[2.5rem] xl:leading[2.8125rem] xl:max-w-[34rem]"
+                >
+                    STAY UPTO DATE ABOUT OUR LATEST OFFERS
+                </h3>
+
+                <form action="" class="w-full xl:w-[21.8rem]">
+                    <div
+                        class="rounded-standard bg-white py-3 px-4 flex items-center gap-3"
+                    >
+                        <img src="/assets/imgs/icons/mail.svg" alt="" /><input
+                            placeholder="Enter your email address"
+                            type="text"
+                            class="w-full text-black placeholder:text-price-original"
+                        />
+                    </div>
+                    <button
+                        class="rounded-standard w-full mt-3 py-3 px-4 bg-white text-black"
+                    >
+                        Subscribe to Newsletter
+                    </button>
+                </form>
+            </section>
+        </main>
+        <footer class="bg-bg-gray section-container pt-48 pb-20 xl:pt-30">
+            <div
+                class="grid grid-cols-2 grid-rows-6 gap-4 xl:flex xl:justify-between"
+            >
+                <div class="col-span-2 row-span-2 xl:w-64">
+                    <p class="heading-section text-3xl xl:text-[2rem]">
+                        SHOP.CO
+                    </p>
+                    <p class="mt-[0.88rem] text-muted">
+                        We have clothes that suits your style and which you’re
+                        proud to wear. From women to men.
+                    </p>
+
+                    <div class="flex items-center gap-3 mt-5">
+                        <a href="#" class="group social-icon hover:bg-black">
+                            <i
+                                class="fa-brands fa-twitter group-hover:text-white"
+                            ></i>
+                        </a>
+                        <a href="#" class="group social-icon hover:bg-black">
+                            <i
+                                class="fa-brands fa-facebook-f group-hover:text-white"
+                            ></i>
+                        </a>
+                        <a href="#" class="group social-icon hover:bg-black">
+                            <i
+                                class="fa-brands fa-instagram group-hover:text-white"
+                            ></i>
+                        </a>
+                        <a href="#" class="group social-icon hover:bg-black">
+                            <i
+                                class="fa-brands fa-github group-hover:text-white"
+                            ></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-link-group row-start-3">
+                    <p>Company</p>
+                    <ul>
+                        <li>About</li>
+                        <li>Features</li>
+                        <li>Works</li>
+                        <li>Career</li>
+                    </ul>
+                </div>
+                <div class="footer-link-group row-start-3">
+                    <p>HELP</p>
+                    <ul>
+                        <li>Customer Support</li>
+                        <li>Delivery Details</li>
+                        <li>Terms & Conditions</li>
+                        <li>Privacy Policy</li>
+                    </ul>
+                </div>
+                <div class="footer-link-group row-start-5">
+                    <p>FAQ</p>
+                    <ul>
+                        <li>Account</li>
+                        <li>Manage Deliveries</li>
+                        <li>Orders</li>
+                        <li>Payment</li>
+                    </ul>
+                </div>
+                <div class="footer-link-group row-start-5">
+                    <p>RESOURCES</p>
+                    <ul>
+                        <li>Free eBook</li>
+                        <li>Development Tutorial</li>
+                        <li>How to - Blog</li>
+                        <li>Youtube Playlist</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="divider xl:mt-[3.12rem] md:mt-8"></div>
+            <div
+                class="flex flex-col gap-4 items-center mt-4 xl:flex-row xl:justify-between"
+            >
+                <span class="text-sm text-muted"
+                    >Shop.co © 2000-2023, All Rights Reserved</span
+                >
+                <div class="flex gap-[0.64rem]">
+                    <img src="/assets/imgs/icons/visa.svg" alt="" />
+                    <img src="/assets/imgs/icons/masterclass.svg" alt="" />
+                    <img src="/assets/imgs/icons/paypal.svg" alt="" />
+                    <img src="/assets/imgs/icons/applepay.svg" alt="" />
+                    <img src="/assets/imgs/icons/googlepay.svg" alt="" />
+                </div>
+            </div>
+        </footer>
+    </body>
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const drawer = document.querySelector('.drawer');
+        const closeDrawer = document.querySelector('.close-drawer');
+
+        const filterContainer = document.querySelector('.filter-container');
+        const filterBtn = document.querySelector('.filter');
+        const closeFilter = document.querySelector('.close-filter');
+        const overlay = document.querySelector('.overlay');
+
+        const handleOpenFilter = () => {
+            filterContainer.classList.toggle('translate-y-full');
+            overlay.classList.toggle('hidden');
+        };
+
+        filterBtn.addEventListener('click', handleOpenFilter);
+        closeFilter.addEventListener('click', handleOpenFilter);
+        overlay.addEventListener('click', handleOpenFilter);
+
+        const handleToggle = () => {
+            drawer.classList.toggle('translate-x-0');
+        };
+
+        hamburger.addEventListener('click', handleToggle);
+        closeDrawer.addEventListener('click', handleToggle);
+    </script>
+</html>

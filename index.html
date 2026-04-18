@@ -1,0 +1,1246 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Fonts -->
+        <link href="https://fonts.cdnfonts.com/css/satoshi" rel="stylesheet" />
+
+        <!-- CSS -->
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+        <style type="text/tailwindcss">
+            @layer base {
+                @font-face {
+                    font-family: 'Integral CF';
+                    src: url('/assets/fonts/IntegralCF-Bold.woff')
+                        format('woff2');
+                    font-weight: bold;
+                    font-style: normal;
+                    font-display: swap;
+                }
+                button {
+                    @apply cursor-pointer;
+                }
+                input {
+                    @apply outline-none;
+                }
+                li {
+                    @apply list-none;
+                }
+                html {
+                    font-family: var(--font-primary);
+                    color: var(--color-primary);
+                    font-weight: var(--font-weight);
+                }
+            }
+            @theme {
+                --font-primary: 'Satoshi', sans-serif;
+                --font-secondary: 'Integral CF', sans-serif;
+                --color-primary: #000;
+
+                --font-weight: 400;
+
+                --spacing-container-x: 6.25rem;
+
+                --color-muted: rgba(0, 0, 0, 0.6);
+                --color-divider: rgba(0, 0, 0, 0.1);
+                --color-bg-gray: #f0f0f0;
+                --color-price-original: #00000066;
+                --radius-standard: 3.875rem;
+            }
+
+            @layer components {
+                .social-icon {
+                    @apply bg-white border border-black/20 rounded-full w-7 h-7 flex items-center justify-center transition-all duration-300 cursor-pointer;
+
+                    & i {
+                        @apply text-black transition-colors duration-300;
+                    }
+                }
+
+                .heading-section {
+                    @apply font-[family-name:var(--font-secondary)] font-bold uppercase;
+                }
+
+                .section-container {
+                    @apply px-4 xl:px-[6.25rem];
+                }
+
+                .footer-link-group {
+                    @apply flex flex-col gap-4 row-span-2;
+
+                    & p {
+                        @apply font-medium;
+                    }
+
+                    & ul {
+                        @apply text-sm text-muted;
+                    }
+                }
+
+                .product-price-group {
+                    @apply flex text-xl xl:text-2xl leading-none items-center;
+
+                    & .badge-discount {
+                        @apply rounded-[3.875rem] bg-[#FF33331A] py-[0.38rem]  text-[#FF3333] text-center font-medium;
+                    }
+
+                    & .origin-price {
+                        @apply text-price-original font-bold line-through;
+                    }
+                }
+
+                .stats-group {
+                    @apply flex justify-center mt-5 flex-wrap xl:flex-nowrap items-center xl:mt-12 xl:justify-start xl:w-full gap-x-7 gap-y-3;
+                }
+
+                .product-card-img {
+                    @apply w-full rounded-[0.389rem];
+                }
+
+                .category-grid {
+                    @apply relative rounded-[1.25rem] bg-white xl:h-72 overflow-hidden xl:row-span-2;
+
+                    & p {
+                        @apply absolute top-[25px] left-[24px] text-2xl font-bold xl:text-4xl;
+                    }
+                }
+
+                .divider {
+                    @apply w-full h-[0.0625rem] bg-divider;
+                }
+
+                .border-base {
+                    @apply border border-black/10;
+                }
+
+                .transition {
+                    @apply transition-all duration-500 ease-in-out;
+                }
+            }
+        </style>
+
+        <!-- Swiper -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+        />
+
+        <!-- Icon -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+            integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+
+        <title>Document</title>
+    </head>
+    <body>
+        <section
+            class="bg-black px-[2.78rem] py-2 text-xs max-w-full text-center xl:flex xl:items-center xl:pl-[34rem] xl:pr-25 xl:gap-[26.56rem] xl:text-sm"
+        >
+            <p class="text-white">
+                Sign up and get 20% off to your first order.
+                <a href="" class="underline font-medium">Sign Up Now</a>
+            </p>
+
+            <span class="hidden cursor-pointer xl:block">
+                <i class="fa-solid fa-x text-white"></i>
+            </span>
+        </section>
+
+        <header
+            class="flex justify-between xl:gap-10 xl:items-center py-[1.44rem] section-container xl:py-9"
+        >
+            <div class="flex gap-[1.16rem]">
+                <img
+                    class="xl:hidden hamburger"
+                    src="/assets/imgs/icons/hamburger.svg"
+                    alt=""
+                />
+                <h1 class="font-bold xl:text-[2rem] text-3xl">
+                    <a href="/">SHOP.CO</a>
+                </h1>
+            </div>
+
+            <ul class="gap-6 hidden xl:flex">
+                <li>
+                    <a
+                        href="#"
+                        class="flex items-center gap-1 text-base text-black"
+                    >
+                        Shop
+                        <img
+                            src="/assets/imgs/icons/arrow-down.svg"
+                            alt="arrow"
+                            class="w-3 h-3"
+                        />
+                    </a>
+                </li>
+                <li><a href="">On Sale</a></li>
+                <li><a href="">New Arrivals</a></li>
+                <li><a href="">Brands</a></li>
+            </ul>
+
+            <form
+                action=""
+                method="GET"
+                class="hidden xl:flex rounded-[3.875rem] bg-bg-gray px-4 py-3 gap-3 flex-2"
+            >
+                <img src="/assets/imgs/icons/search.svg" alt="" />
+                <input
+                    class="w-full"
+                    type="text"
+                    placeholder="Search for products..."
+                />
+            </form>
+
+            <div class="flex xl:gap-[0.88rem] gap-3 items-center">
+                <img
+                    class="xl:hidden w-6 h-6"
+                    src="/assets/imgs/icons/search-bold.svg"
+                    alt=""
+                />
+                <a href="/cart.html"
+                    ><img
+                        class="w-6 h-6"
+                        src="/assets/imgs/icons/cart.svg"
+                        alt=""
+                /></a>
+                <img
+                    class="w-6 h-6"
+                    src="/assets/imgs/icons/guess.svg"
+                    alt=""
+                />
+            </div>
+        </header>
+
+        <section
+            class="fixed top-0 left-0 z-50 h-screen w-full bg-white xl:hidden transition -translate-x-full p-6 drawer"
+        >
+            <div class="flex justify-between items-center mb-10">
+                <h2 class="font-bold text-2xl font-integral">SHOP.CO</h2>
+                <label for="menu-toggle" class="cursor-pointer">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="size-6 close-drawer"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M6 18 18 6M6 6l12 12"
+                        />
+                    </svg>
+                </label>
+            </div>
+
+            <ul class="flex flex-col gap-6">
+                <li class="border-black/5 pb-4">
+                    <a
+                        href="#"
+                        class="flex items-center justify-between text-lg text-black"
+                    >
+                        Shop
+                        <img
+                            src="/assets/imgs/icons/arrow-down.svg"
+                            alt="arrow"
+                            class="w-4 h-4 -rotate-90"
+                        />
+                    </a>
+                </li>
+                <li class="border-black/5 pb-4">
+                    <a href="" class="text-lg font-medium">On Sale</a>
+                </li>
+                <li class="border-black/5 pb-4">
+                    <a href="" class="text-lg font-medium">New Arrivals</a>
+                </li>
+                <li class="border-black/5 pb-4">
+                    <a href="" class="text-lg font-medium">Brands</a>
+                </li>
+            </ul>
+        </section>
+        <main>
+            <section
+                class="bg-[#F2F0F1] flex flex-col xl:flex-row items-center xl:px-[6.25rem] pt-10"
+            >
+                <div class="flex-1 px-4 xl:px-0">
+                    <h2
+                        class="text-4xl leading-[2.125rem] w-80 xl:text-[4rem] xl:w-[36rem] xl:leading-[4rem] heading-section"
+                    >
+                        FIND CLOTHES THAT MATCHES YOUR STYLE
+                    </h2>
+                    <p class="mt-5 text-sm xl:mt-8 xl:w-[34rem] text-muted">
+                        Browse through our diverse range of meticulously crafted
+                        garments, designed to bring out your individuality and
+                        cater to your sense of style.
+                    </p>
+
+                    <button
+                        class="rounded-standard mt-6 w-full px-[3.38rem] py-4 bg-black text-white cursor-pointer xl:w-auto"
+                    >
+                        Shop Now
+                    </button>
+
+                    <div class="stats-group">
+                        <!-- Item 1 -->
+                        <div class="xl:w-auto border-black/10">
+                            <div class="text-left">
+                                <h3 class="text-2xl xl:text-4xl font-bold">
+                                    200+
+                                </h3>
+                                <p
+                                    class="text-xs leading-[1.375rem] xl:text-base text-black/60"
+                                >
+                                    International Brands
+                                </p>
+                            </div>
+                        </div>
+
+                        <img src="/assets/imgs/icons/Line.svg" alt="" />
+
+                        <!-- Item 2 -->
+                        <div class="xl:w-auto">
+                            <h3 class="text-2xl xl:text-4xl font-bold">
+                                2,000+
+                            </h3>
+                            <p class="text-xs xl:text-base text-black/60">
+                                High-Quality Products
+                            </p>
+                        </div>
+
+                        <img
+                            class="hidden md:block lg:block xl:block"
+                            src="/assets/imgs/icons/Line.svg"
+                            alt=""
+                        />
+
+                        <!-- Item 3 -->
+                        <div class="text-center flex-0.5 xl:text-left">
+                            <h3 class="text-2xl xl:text-4xl font-bold">
+                                30,000+
+                            </h3>
+                            <p class="text-xs xl:text-base text-black/60">
+                                Happy Customers
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-1 relative w-full">
+                    <img class="w-full" src="/assets/imgs/hero.png" alt="" />
+                    <img
+                        class="absolute top-1/3 left-5 xl:top-[40%] xl:w-14 xl:h-14"
+                        src="/assets/imgs/icons/star-small.svg"
+                        alt=""
+                    />
+                    <img
+                        class="absolute top-1/8 xl:top-1/6 right-5 xl:w-24 xl:h-24"
+                        src="/assets/imgs/icons/star-big.svg"
+                        alt=""
+                    />
+                </div>
+            </section>
+
+            <section
+                class="bg-black flex flex-wrap py-10 items-center justify-center lg:justify-between gap-8 xl:justify-between section-container"
+            >
+                <img src="/assets/imgs/versace.svg" alt="" />
+                <img src="/assets/imgs/zara.svg" alt="" />
+                <img src="/assets/imgs/gucci.svg" alt="" />
+                <img src="/assets/imgs/prada.svg" alt="" />
+                <img src="/assets/imgs/calvin-klein.svg" alt="" />
+            </section>
+
+            <div class="section-container">
+                <section class="pt-[3.12rem] pb-10 xl:pb-16">
+                    <h3 class="text-3xl heading-section text-center">
+                        new arrivals
+                    </h3>
+                    <div class="swiper swiper-product mt-8">
+                        <div class="swiper-wrapper">
+                            <!-- Slides -->
+                            <!-- 1 -->
+                            <a href="/product-detail.html" class="swiper-slide"
+                                ><article>
+                                    <div>
+                                        <img
+                                            class="product-card-img"
+                                            src="/assets/imgs/product-img.svg"
+                                            alt=""
+                                        />
+                                    </div>
+
+                                    <section
+                                        class="mt-[0.62rem] flex flex-col gap-[0.27rem]"
+                                    >
+                                        <h4
+                                            class="text-base xl:text-xl font-bold truncate"
+                                        >
+                                            T-Shirt with Tape Details
+                                        </h4>
+                                        <section
+                                            class="flex items-center gap-[0.69rem]"
+                                        >
+                                            <div class="flex gap-[0.28rem]">
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-half.svg"
+                                                    alt=""
+                                                />
+                                            </div>
+                                            <p class="text-xs xl:text-sm">
+                                                4.5/<span class="text-muted"
+                                                    >5</span
+                                                >
+                                            </p>
+                                        </section>
+                                        <div class="flex gap-[0.31rem]">
+                                            <p class="text-xl font-bold">
+                                                $120
+                                            </p>
+                                        </div>
+                                    </section>
+                                </article></a
+                            >
+                            <!-- 2 -->
+                            <a href="/product-detail.html" class="swiper-slide">
+                                <article>
+                                    <div>
+                                        <img
+                                            class="product-card-img"
+                                            src="/assets/imgs/product-img-2.svg"
+                                            alt=""
+                                        />
+                                    </div>
+
+                                    <section
+                                        class="mt-[0.62rem] flex flex-col gap-[0.27rem]"
+                                    >
+                                        <h4
+                                            class="text-base xl:text-xl font-bold truncate"
+                                        >
+                                            Vertical Striped Shirt
+                                        </h4>
+                                        <section
+                                            class="flex items-center gap-[0.69rem]"
+                                        >
+                                            <div class="flex gap-[0.28rem]">
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                            </div>
+                                            <p class="text-xs xl:text-sm">
+                                                5.0/<span class="text-muted"
+                                                    >5</span
+                                                >
+                                            </p>
+                                        </section>
+                                        <div
+                                            class="product-price-group gap-[0.31rem] xl:gap-[0.62rem]"
+                                        >
+                                            <p class="font-bold">$212</p>
+                                            <p class="origin-price">$235</p>
+                                            <span
+                                                class="badge-discount px-[0.88rem] xl:text-xs text-[0.625rem]"
+                                                >-20%</span
+                                            >
+                                        </div>
+                                    </section>
+                                </article></a
+                            >
+                            <!-- 3 -->
+                            <a href="/product-detail.html" class="swiper-slide">
+                                <article>
+                                    <div>
+                                        <img
+                                            class="product-card-img"
+                                            src="/assets/imgs/product-img-2.svg"
+                                            alt=""
+                                        />
+                                    </div>
+
+                                    <section
+                                        class="mt-[0.62rem] flex flex-col gap-[0.27rem]"
+                                    >
+                                        <h4
+                                            class="text-base xl:text-xl font-bold truncate"
+                                        >
+                                            Vertical Striped Shirt
+                                        </h4>
+                                        <section
+                                            class="flex items-center gap-[0.69rem]"
+                                        >
+                                            <div class="flex gap-[0.28rem]">
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                            </div>
+                                            <p class="text-xs xl:text-sm">
+                                                5.0/<span class="text-muted"
+                                                    >5</span
+                                                >
+                                            </p>
+                                        </section>
+                                        <div
+                                            class="product-price-group gap-[0.31rem] xl:gap-[0.62rem]"
+                                        >
+                                            <p class="font-bold">$212</p>
+                                            <p class="origin-price">$235</p>
+                                            <span
+                                                class="badge-discount px-[0.88rem] xl:text-xs text-[0.625rem]"
+                                                >-20%</span
+                                            >
+                                        </div>
+                                    </section>
+                                </article></a
+                            >
+                            <!-- 4 -->
+                            <a href="/product-detail.html" class="swiper-slide">
+                                <article>
+                                    <div>
+                                        <img
+                                            class="product-card-img"
+                                            src="/assets/imgs/product-img.svg"
+                                            alt=""
+                                        />
+                                    </div>
+
+                                    <section
+                                        class="mt-[0.62rem] flex flex-col gap-[0.27rem]"
+                                    >
+                                        <h4
+                                            class="text-base xl:text-xl font-bold truncate"
+                                        >
+                                            T-Shirt with Tape Details
+                                        </h4>
+                                        <section
+                                            class="flex items-center gap-[0.69rem]"
+                                        >
+                                            <div class="flex gap-[0.28rem]">
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-half.svg"
+                                                    alt=""
+                                                />
+                                            </div>
+                                            <p class="text-xs xl:text-sm">
+                                                4.5/<span class="text-muted"
+                                                    >5</span
+                                                >
+                                            </p>
+                                        </section>
+                                        <div class="flex gap-[0.31rem]">
+                                            <p
+                                                class="text-xl xl:text-2xl font-bold"
+                                            >
+                                                $120
+                                            </p>
+                                        </div>
+                                    </section>
+                                </article></a
+                            >
+                        </div>
+                    </div>
+
+                    <button
+                        class="rounded-standard border w-full mt-6 border-black/10 px-[3.38rem] py-4 text-sm font-medium xl:text-base xl:mt-9 xl:block xl:w-auto mx-auto my-0"
+                    >
+                        <a href="">View All</a>
+                    </button>
+                </section>
+                <div class="divider"></div>
+
+                <section class="pt-10 xl:pt-16 pb-10">
+                    <h3 class="text-3xl heading-section text-center">
+                        top selling
+                    </h3>
+                    <div class="swiper swiper-product mt-8">
+                        <div class="swiper-wrapper">
+                            <!-- Slides -->
+                            <!-- 1 -->
+                            <a href="/product-detail.html" class="swiper-slide">
+                                <article>
+                                    <div>
+                                        <img
+                                            class="product-card-img"
+                                            src="/assets/imgs/product-img.svg"
+                                            alt=""
+                                        />
+                                    </div>
+
+                                    <section
+                                        class="mt-[0.62rem] flex flex-col gap-[0.27rem]"
+                                    >
+                                        <h4
+                                            class="text-base xl:text-xl font-bold truncate"
+                                        >
+                                            T-Shirt with Tape Details
+                                        </h4>
+                                        <section
+                                            class="flex items-center gap-[0.69rem]"
+                                        >
+                                            <div class="flex gap-[0.28rem]">
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-half.svg"
+                                                    alt=""
+                                                />
+                                            </div>
+                                            <p class="text-xs xl:text-sm">
+                                                4.5/<span class="text-muted"
+                                                    >5</span
+                                                >
+                                            </p>
+                                        </section>
+                                        <div class="flex gap-[0.31rem]">
+                                            <p class="text-xl font-bold">
+                                                $120
+                                            </p>
+                                        </div>
+                                    </section>
+                                </article>
+                            </a>
+
+                            <!-- 2 -->
+                            <a href="/product-detail.html" class="swiper-slide">
+                                <article>
+                                    <div>
+                                        <img
+                                            class="product-card-img"
+                                            src="/assets/imgs/product-img-2.svg"
+                                            alt=""
+                                        />
+                                    </div>
+
+                                    <section
+                                        class="mt-[0.62rem] flex flex-col gap-[0.27rem]"
+                                    >
+                                        <h4
+                                            class="text-base xl:text-xl font-bold truncate"
+                                        >
+                                            Vertical Striped Shirt
+                                        </h4>
+                                        <section
+                                            class="flex items-center gap-[0.69rem]"
+                                        >
+                                            <div class="flex gap-[0.28rem]">
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                            </div>
+                                            <p class="text-xs xl:text-sm">
+                                                5.0/<span class="text-muted"
+                                                    >5</span
+                                                >
+                                            </p>
+                                        </section>
+                                        <div
+                                            class="product-price-group gap-[0.31rem] xl:gap-[0.62rem]"
+                                        >
+                                            <p class="font-bold">$212</p>
+                                            <p class="origin-price">$235</p>
+                                            <span
+                                                class="badge-discount px-[0.88rem] xl:text-xs text-[0.625rem]"
+                                                >-20%</span
+                                            >
+                                        </div>
+                                    </section>
+                                </article></a
+                            >
+                            <!-- 3 -->
+                            <a href="/product-detail.html" class="swiper-slide">
+                                <article>
+                                    <div>
+                                        <img
+                                            class="product-card-img"
+                                            src="/assets/imgs/product-img-2.svg"
+                                            alt=""
+                                        />
+                                    </div>
+
+                                    <section
+                                        class="mt-[0.62rem] flex flex-col gap-[0.27rem]"
+                                    >
+                                        <h4
+                                            class="text-base xl:text-xl font-bold truncate"
+                                        >
+                                            Vertical Striped Shirt
+                                        </h4>
+                                        <section
+                                            class="flex items-center gap-[0.69rem]"
+                                        >
+                                            <div class="flex gap-[0.28rem]">
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                            </div>
+                                            <p class="text-xs xl:text-sm">
+                                                5.0/<span class="text-muted"
+                                                    >5</span
+                                                >
+                                            </p>
+                                        </section>
+                                        <div
+                                            class="product-price-group gap-[0.31rem] xl:gap-[0.62rem]"
+                                        >
+                                            <p class="font-bold">$212</p>
+                                            <p class="origin-price">$235</p>
+                                            <span
+                                                class="badge-discount px-[0.88rem] xl:text-xs text-[0.625rem]"
+                                                >-20%</span
+                                            >
+                                        </div>
+                                    </section>
+                                </article></a
+                            >
+                            <!-- 4 -->
+                            <a href="/product-detail.html" class="swiper-slide">
+                                <article>
+                                    <div>
+                                        <img
+                                            class="product-card-img"
+                                            src="/assets/imgs/product-img.svg"
+                                            alt=""
+                                        />
+                                    </div>
+
+                                    <section
+                                        class="mt-[0.62rem] flex flex-col gap-[0.27rem]"
+                                    >
+                                        <h4
+                                            class="text-base xl:text-xl font-bold truncate"
+                                        >
+                                            T-Shirt with Tape Details
+                                        </h4>
+                                        <section
+                                            class="flex items-center gap-[0.69rem]"
+                                        >
+                                            <div class="flex gap-[0.28rem]">
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-full.svg"
+                                                    alt=""
+                                                />
+                                                <img
+                                                    src="/assets/imgs/icons/star-rate-half.svg"
+                                                    alt=""
+                                                />
+                                            </div>
+                                            <p class="text-xs xl:text-sm">
+                                                4.5/<span class="text-muted"
+                                                    >5</span
+                                                >
+                                            </p>
+                                        </section>
+                                        <div class="flex gap-[0.31rem]">
+                                            <p
+                                                class="text-xl xl:text-2xl font-bold"
+                                            >
+                                                $120
+                                            </p>
+                                        </div>
+                                    </section>
+                                </article>
+                            </a>
+                        </div>
+                    </div>
+
+                    <button
+                        class="rounded-standard border w-full mt-6 border-black/10 px-[3.38rem] py-4 text-sm font-medium xl:text-base xl:mt-9 xl:block xl:w-auto mx-auto my-0"
+                    >
+                        <a href="">View All</a>
+                    </button>
+                </section>
+
+                <section
+                    class="mt-[3.12rem] pt-10 pb-[1.69rem] px-6 rounded-[1.25rem] bg-bg-gray flex flex-col items-center"
+                >
+                    <h3
+                        class="heading-section text-center text-[2rem] leading-9 max-w-[90%] xl:text-5xl"
+                    >
+                        BROWSE BY dress STYLE
+                    </h3>
+
+                    <div
+                        class="grid grid-cols-1 gap-4 mt-7 w-full xl:grid-cols-3 xl:grid-rows-4 xl:gap-5 xl:mt-16"
+                    >
+                        <article
+                            class="category-grid h-44 xl:h-72"
+                        >
+                            <img
+                                class="w-full h-full"
+                                src="/assets/imgs/image 11.svg"
+                                alt=""
+                            />
+                            <p>Casual</p>
+                        </article>
+
+                        <article class="category-grid xl:col-span-2 h-44 xl:h-72">
+                            <img
+                                class="w-full h-full r"
+                                src="/assets/imgs/image 13.svg"
+                                alt=""
+                            />
+                            <p>Formal</p>
+                        </article>
+
+                        <article
+                            class="category-grid xl:col-span-2 xl:col-start-1 xl:row-start-3 h-44 xl:h-72"
+                        >
+                            <img
+                                class="w-full h-full"
+                                src="/assets/imgs/image 12.svg"
+                                alt=""
+                            />
+                            <p>Party</p>
+                        </article>
+
+                        <article
+                            class="category-grid xl:col-start-3 xl:text-4xl h-44 xl:h-72"
+                        >
+                            <img
+                                class="w-full h-full"
+                                src="/assets/imgs/image 14.svg"
+                                alt=""
+                            />
+                            <p>Gym</p>
+                        </article>
+                    </div>
+                </section>
+
+                <section class="mt-12">
+                    <div class="flex items-end">
+                        <h3
+                            class="heading-section text-[2rem] flex-1 xl:text-5xl"
+                        >
+                            OUR HAPPY CUSTOMERS
+                        </h3>
+                        <div class="flex items-center gap-4">
+                            <img
+                                src="/assets/imgs/icons/arrow-left.svg"
+                                alt=""
+                                class="swiper-custom-button-prev"
+                            />
+                            <img
+                                src="/assets/imgs/icons/arrow-right.svg"
+                                alt=""
+                                class="swiper-custom-button-next"
+                            />
+                        </div>
+                    </div>
+
+                    <section class="swiper swiper-comments mt-6">
+                        <div class="swiper-wrapper">
+                            <article
+                                class="swiper-slide border-base p-6 rounded-[1.25rem]"
+                            >
+                                <div class="flex flex-col">
+                                    <div class="flex gap-1">
+                                        <h4
+                                            class="text-base font-bold xl:text-xl"
+                                        >
+                                            Sarah M.
+                                        </h4>
+                                        <img
+                                            src="/assets/imgs/icons/verified.svg"
+                                            alt=""
+                                        />
+                                    </div>
+
+                                    <p class="text-muted text-sm xl:text-base">
+                                        "I'm blown away by the quality and style
+                                        of the clothes I received from Shop.co.
+                                        From casual wear to elegant dresses,
+                                        every piece I've bought has exceeded my
+                                        expectations.”
+                                    </p>
+                                </div>
+                            </article>
+                            <article
+                                class="swiper-slide border-base p-6 rounded-[1.25rem]"
+                            >
+                                <div class="flex flex-col">
+                                    <div class="flex gap-1">
+                                        <h4
+                                            class="text-base font-bold xl:text-xl"
+                                        >
+                                            Alex K.
+                                        </h4>
+                                        <img
+                                            src="/assets/imgs/icons/verified.svg"
+                                            alt=""
+                                        />
+                                    </div>
+
+                                    <p class="text-muted text-sm xl:text-base">
+                                        "Finding clothes that align with my
+                                        personal style used to be a challenge
+                                        until I discovered Shop.co. The range of
+                                        options they offer is truly remarkable,
+                                        catering to a variety of tastes and
+                                        occasions.”
+                                    </p>
+                                </div>
+                            </article>
+                            <article
+                                class="swiper-slide border-base p-6 rounded-[1.25rem]"
+                            >
+                                <div class="flex flex-col">
+                                    <div class="flex gap-1">
+                                        <h4
+                                            class="text-base font-bold xl:text-xl"
+                                        >
+                                            James L.
+                                        </h4>
+                                        <img
+                                            src="/assets/imgs/icons/verified.svg"
+                                            alt=""
+                                        />
+                                    </div>
+
+                                    <p class="text-muted text-sm xl:text-base">
+                                        "As someone who's always on the lookout
+                                        for unique fashion pieces, I'm thrilled
+                                        to have stumbled upon Shop.co. The
+                                        selection of clothes is not only diverse
+                                        but also on-point with the latest
+                                        trends.”
+                                    </p>
+                                </div>
+                            </article>
+                            <article
+                                class="swiper-slide border-base p-6 rounded-[1.25rem]"
+                            >
+                                <div class="flex flex-col">
+                                    <div class="flex gap-1">
+                                        <h4
+                                            class="text-base font-bold xl:text-xl"
+                                        >
+                                            Sarah M.
+                                        </h4>
+                                        <img
+                                            src="/assets/imgs/icons/verified.svg"
+                                            alt=""
+                                        />
+                                    </div>
+
+                                    <p class="text-muted text-sm xl:text-base">
+                                        "I'm blown away by the quality and style
+                                        of the clothes I received from Shop.co.
+                                        From casual wear to elegant dresses,
+                                        every piece I've bought has exceeded my
+                                        expectations.”
+                                    </p>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+                </section>
+
+                <section
+                    class="bg-black text-white pt-8 pr-[1.44rem] pb-7 pl-6 rounded-[1.25rem] flex xl:flex-row xl:justify-between flex-col gap-8 xl:px-16 xl:py-9 translate-y-1/2 -mt-[25%] md:-mt-[10%] lg:-mt-[5%] xl:-mt-0"
+                >
+                    <h3
+                        class="heading-section font-bold leading-[2.1875rem] text-[2rem] xl:text-[2.5rem] xl:leading[2.8125rem] xl:max-w-[34rem]"
+                    >
+                        STAY UPTO DATE ABOUT OUR LATEST OFFERS
+                    </h3>
+
+                    <form action="" class="w-full xl:w-[21.8rem]">
+                        <div
+                            class="rounded-standard bg-white py-3 px-4 flex items-center gap-3"
+                        >
+                            <img
+                                src="/assets/imgs/icons/mail.svg"
+                                alt=""
+                            /><input
+                                placeholder="Enter your email address"
+                                type="text"
+                                class="w-full text-black placeholder:text-price-original"
+                            />
+                        </div>
+                        <button
+                            class="rounded-standard w-full mt-3 py-3 px-4 bg-white text-black"
+                        >
+                            Subscribe to Newsletter
+                        </button>
+                    </form>
+                </section>
+            </div>
+        </main>
+        <footer class="bg-bg-gray section-container pt-48 pb-20 xl:pt-30">
+            <div
+                class="grid grid-cols-2 grid-rows-6 gap-4 xl:flex xl:justify-between"
+            >
+                <div class="col-span-2 row-span-2 xl:w-64">
+                    <p class="heading-section text-3xl xl:text-[2rem]">
+                        SHOP.CO
+                    </p>
+                    <p class="mt-[0.88rem] text-muted">
+                        We have clothes that suits your style and which you’re
+                        proud to wear. From women to men.
+                    </p>
+
+                    <div class="flex items-center gap-3 mt-5">
+                        <a href="#" class="group social-icon hover:bg-black">
+                            <i
+                                class="fa-brands fa-twitter group-hover:text-white"
+                            ></i>
+                        </a>
+                        <a href="#" class="group social-icon hover:bg-black">
+                            <i
+                                class="fa-brands fa-facebook-f group-hover:text-white"
+                            ></i>
+                        </a>
+                        <a href="#" class="group social-icon hover:bg-black">
+                            <i
+                                class="fa-brands fa-instagram group-hover:text-white"
+                            ></i>
+                        </a>
+                        <a href="#" class="group social-icon hover:bg-black">
+                            <i
+                                class="fa-brands fa-github group-hover:text-white"
+                            ></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-link-group row-start-3">
+                    <p>Company</p>
+                    <ul>
+                        <li>About</li>
+                        <li>Features</li>
+                        <li>Works</li>
+                        <li>Career</li>
+                    </ul>
+                </div>
+                <div class="footer-link-group row-start-3">
+                    <p>HELP</p>
+                    <ul>
+                        <li>Customer Support</li>
+                        <li>Delivery Details</li>
+                        <li>Terms & Conditions</li>
+                        <li>Privacy Policy</li>
+                    </ul>
+                </div>
+                <div class="footer-link-group row-start-5">
+                    <p>FAQ</p>
+                    <ul>
+                        <li>Account</li>
+                        <li>Manage Deliveries</li>
+                        <li>Orders</li>
+                        <li>Payment</li>
+                    </ul>
+                </div>
+                <div class="footer-link-group row-start-5">
+                    <p>RESOURCES</p>
+                    <ul>
+                        <li>Free eBook</li>
+                        <li>Development Tutorial</li>
+                        <li>How to - Blog</li>
+                        <li>Youtube Playlist</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="divider xl:mt-[3.12rem] md:mt-8"></div>
+            <div
+                class="flex flex-col gap-4 items-center mt-4 xl:flex-row xl:justify-between"
+            >
+                <span class="text-sm text-muted"
+                    >Shop.co © 2000-2023, All Rights Reserved</span
+                >
+                <div class="flex gap-[0.64rem]">
+                    <img src="/assets/imgs/icons/visa.svg" alt="" />
+                    <img src="/assets/imgs/icons/masterclass.svg" alt="" />
+                    <img src="/assets/imgs/icons/paypal.svg" alt="" />
+                    <img src="/assets/imgs/icons/applepay.svg" alt="" />
+                    <img src="/assets/imgs/icons/googlepay.svg" alt="" />
+                </div>
+            </div>
+        </footer>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const drawer = document.querySelector('.drawer');
+        const closeDrawer = document.querySelector('.close-drawer');
+        const handleToggle = () => {
+            drawer.classList.toggle('-translate-x-full');
+        };
+
+        hamburger.addEventListener('click', handleToggle);
+        closeDrawer.addEventListener('click', handleToggle);
+
+        const swiperConfig = {
+            slidesPerView: 2,
+            spaceBetween: 16,
+
+            breakpoints: {
+                640: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 4,
+                    spaceBetween: 20,
+                },
+            },
+            loop: true,
+            autoplay: {
+                delay: 2000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+            },
+        };
+
+        const swiperProduct = new Swiper('.swiper-product', swiperConfig);
+        const swiperComments = new Swiper('.swiper-comments', {
+            ...swiperConfig,
+            slidesPerView: 1,
+            navigation: {
+                prevEl: '.swiper-custom-button-prev',
+                nextEl: '.swiper-custom-button-next',
+            },
+            breakpoints: {
+                1024: {
+                    slidesPerView: 3,
+                },
+            },
+        });
+    </script>
+</html>
