@@ -80,14 +80,14 @@
                 }
 
                 .product-price-group {
-                    @apply flex text-xl xl:text-2xl leading-none items-center;
+                    @apply flex text-xl md:text-2xl lg:text-[1.625rem] xl:text-2xl leading-none items-center;
 
                     & .badge-discount {
-                        @apply rounded-[3.875rem] bg-[#FF33331A] py-[0.38rem]  text-[#FF3333] text-center font-medium;
+                        @apply rounded-[3.875rem] bg-[#FF33331A] py-[0.38rem] text-[#FF3333] text-center font-medium px-[0.88rem]  md:text-xs text-[0.625rem];
                     }
 
                     & .origin-price {
-                        @apply text-price-original font-bold line-through;
+                        @apply text-price-original font-bold line-through md:text-xl lg:text-[1.375rem];
                     }
                 }
 
@@ -103,7 +103,7 @@
                     @apply relative rounded-[1.25rem] bg-white xl:h-72 overflow-hidden xl:row-span-2;
 
                     & p {
-                        @apply absolute top-[25px] left-[24px] text-2xl font-bold xl:text-4xl;
+                        @apply absolute top-[25px] left-[24px] text-2xl font-bold md:text-3xl lg:text-[2.25rem] xl:text-4xl;
                     }
                 }
 
@@ -117,6 +117,10 @@
 
                 .transition {
                     @apply transition-all duration-500 ease-in-out;
+                }
+
+                .swiper-slide {
+                    height: auto !important;
                 }
             }
         </style>
@@ -157,7 +161,7 @@
         >
             <div class="flex gap-[1.16rem]">
                 <img
-                    class="xl:hidden hamburger"
+                    class="xl:hidden cursor-pointer hamburger"
                     src="/assets/imgs/icons/hamburger.svg"
                     alt=""
                 />
@@ -272,31 +276,36 @@
             >
                 <div class="flex-1 px-4 xl:px-0">
                     <h2
-                        class="text-4xl leading-[2.125rem] w-80 xl:text-[4rem] xl:w-[36rem] xl:leading-[4rem] heading-section"
+                        class="text-4xl leading-[2.125rem] w-80 md:text-5xl md:leading-[3.5rem] md:w-[30rem] lg:text-[3.5rem] lg:leading-[3.75rem] lg:w-[32rem] xl:text-[4rem] xl:w-[36rem] xl:leading-[4rem] heading-section"
                     >
                         FIND CLOTHES THAT MATCHES YOUR STYLE
                     </h2>
-                    <p class="mt-5 text-sm xl:mt-8 xl:w-[34rem] text-muted">
+                    <p
+                        class="mt-5 text-sm md:text-base md:w-[28rem] md:leading-7 lg:text-lg lg:w-[32rem] lg:leading-8 xl:mt-8 xl:w-[34rem] text-muted"
+                    >
                         Browse through our diverse range of meticulously crafted
                         garments, designed to bring out your individuality and
                         cater to your sense of style.
                     </p>
 
-                    <button
-                        class="rounded-standard mt-6 w-full px-[3.38rem] py-4 bg-black text-white cursor-pointer xl:w-auto"
+                    <a
+                        class="rounded-standard mt-6 w-full px-[3.38rem] py-4 bg-black text-white cursor-pointer md:text-base lg:text-lg xl:w-auto inline-block text-center"
+                        href="/category.html"
                     >
                         Shop Now
-                    </button>
+                    </a>
 
                     <div class="stats-group">
                         <!-- Item 1 -->
                         <div class="xl:w-auto border-black/10">
                             <div class="text-left">
-                                <h3 class="text-2xl xl:text-4xl font-bold">
+                                <h3
+                                    class="text-2xl md:text-3xl lg:text-[2.5rem] xl:text-4xl font-bold"
+                                >
                                     200+
                                 </h3>
                                 <p
-                                    class="text-xs leading-[1.375rem] xl:text-base text-black/60"
+                                    class="text-xs md:text-sm lg:text-base leading-[1.375rem] xl:text-base text-black/60"
                                 >
                                     International Brands
                                 </p>
@@ -307,10 +316,14 @@
 
                         <!-- Item 2 -->
                         <div class="xl:w-auto">
-                            <h3 class="text-2xl xl:text-4xl font-bold">
+                            <h3
+                                class="text-2xl md:text-3xl lg:text-[2.5rem] xl:text-4xl font-bold"
+                            >
                                 2,000+
                             </h3>
-                            <p class="text-xs xl:text-base text-black/60">
+                            <p
+                                class="text-xs md:text-sm lg:text-base xl:text-base text-black/60"
+                            >
                                 High-Quality Products
                             </p>
                         </div>
@@ -323,10 +336,14 @@
 
                         <!-- Item 3 -->
                         <div class="text-center flex-0.5 xl:text-left">
-                            <h3 class="text-2xl xl:text-4xl font-bold">
+                            <h3
+                                class="text-2xl md:text-3xl lg:text-[2.5rem] xl:text-4xl font-bold"
+                            >
                                 30,000+
                             </h3>
-                            <p class="text-xs xl:text-base text-black/60">
+                            <p
+                                class="text-xs md:text-sm lg:text-base xl:text-base text-black/60"
+                            >
                                 Happy Customers
                             </p>
                         </div>
@@ -360,7 +377,9 @@
 
             <div class="section-container">
                 <section class="pt-[3.12rem] pb-10 xl:pb-16">
-                    <h3 class="text-3xl heading-section text-center">
+                    <h3
+                        class="text-3xl md:text-4xl md:leading-tight lg:text-5xl lg:leading-normal heading-section text-center"
+                    >
                         new arrivals
                     </h3>
                     <div class="swiper swiper-product mt-8">
@@ -381,7 +400,7 @@
                                         class="mt-[0.62rem] flex flex-col gap-[0.27rem]"
                                     >
                                         <h4
-                                            class="text-base xl:text-xl font-bold truncate"
+                                            class="text-base md:text-lg md:leading-tight lg:text-xl lg:leading-snug xl:text-xl font-bold truncate"
                                         >
                                             T-Shirt with Tape Details
                                         </h4>
@@ -410,16 +429,18 @@
                                                     alt=""
                                                 />
                                             </div>
-                                            <p class="text-xs xl:text-sm">
+                                            <p
+                                                class="text-xs md:text-sm lg:text-base xl:text-sm"
+                                            >
                                                 4.5/<span class="text-muted"
                                                     >5</span
                                                 >
                                             </p>
                                         </section>
-                                        <div class="flex gap-[0.31rem]">
-                                            <p class="text-xl font-bold">
-                                                $120
-                                            </p>
+                                        <div
+                                            class="flex product-price-group gap-[0.31rem]"
+                                        >
+                                            <p class="font-bold">$120</p>
                                         </div>
                                     </section>
                                 </article></a
@@ -439,7 +460,7 @@
                                         class="mt-[0.62rem] flex flex-col gap-[0.27rem]"
                                     >
                                         <h4
-                                            class="text-base xl:text-xl font-bold truncate"
+                                            class="text-base md:text-lg md:leading-tight lg:text-xl lg:leading-snug xl:text-xl font-bold truncate"
                                         >
                                             Vertical Striped Shirt
                                         </h4>
@@ -468,7 +489,9 @@
                                                     alt=""
                                                 />
                                             </div>
-                                            <p class="text-xs xl:text-sm">
+                                            <p
+                                                class="text-xs md:text-sm lg:text-base xl:text-sm"
+                                            >
                                                 5.0/<span class="text-muted"
                                                     >5</span
                                                 >
@@ -479,8 +502,7 @@
                                         >
                                             <p class="font-bold">$212</p>
                                             <p class="origin-price">$235</p>
-                                            <span
-                                                class="badge-discount px-[0.88rem] xl:text-xs text-[0.625rem]"
+                                            <span class="badge-discount"
                                                 >-20%</span
                                             >
                                         </div>
@@ -502,7 +524,7 @@
                                         class="mt-[0.62rem] flex flex-col gap-[0.27rem]"
                                     >
                                         <h4
-                                            class="text-base xl:text-xl font-bold truncate"
+                                            class="text-base md:text-lg md:leading-tight lg:text-xl lg:leading-snug xl:text-xl font-bold truncate"
                                         >
                                             Vertical Striped Shirt
                                         </h4>
@@ -531,7 +553,9 @@
                                                     alt=""
                                                 />
                                             </div>
-                                            <p class="text-xs xl:text-sm">
+                                            <p
+                                                class="text-xs md:text-sm lg:text-base xl:text-sm"
+                                            >
                                                 5.0/<span class="text-muted"
                                                     >5</span
                                                 >
@@ -542,8 +566,7 @@
                                         >
                                             <p class="font-bold">$212</p>
                                             <p class="origin-price">$235</p>
-                                            <span
-                                                class="badge-discount px-[0.88rem] xl:text-xs text-[0.625rem]"
+                                            <span class="badge-discount"
                                                 >-20%</span
                                             >
                                         </div>
@@ -565,7 +588,7 @@
                                         class="mt-[0.62rem] flex flex-col gap-[0.27rem]"
                                     >
                                         <h4
-                                            class="text-base xl:text-xl font-bold truncate"
+                                            class="text-base md:text-lg md:leading-tight lg:text-xl lg:leading-snug xl:text-xl font-bold truncate"
                                         >
                                             T-Shirt with Tape Details
                                         </h4>
@@ -594,18 +617,18 @@
                                                     alt=""
                                                 />
                                             </div>
-                                            <p class="text-xs xl:text-sm">
+                                            <p
+                                                class="text-xs md:text-sm lg:text-base xl:text-sm"
+                                            >
                                                 4.5/<span class="text-muted"
                                                     >5</span
                                                 >
                                             </p>
                                         </section>
-                                        <div class="flex gap-[0.31rem]">
-                                            <p
-                                                class="text-xl xl:text-2xl font-bold"
-                                            >
-                                                $120
-                                            </p>
+                                        <div
+                                            class="flex product-price-group gap-[0.31rem]"
+                                        >
+                                            <p class="font-bold">$120</p>
                                         </div>
                                     </section>
                                 </article></a
@@ -614,7 +637,7 @@
                     </div>
 
                     <button
-                        class="rounded-standard border w-full mt-6 border-black/10 px-[3.38rem] py-4 text-sm font-medium xl:text-base xl:mt-9 xl:block xl:w-auto mx-auto my-0"
+                        class="rounded-standard border w-full mt-6 border-black/10 px-[3.38rem] py-4 text-sm font-medium md:text-base xl:mt-9 md:block md:w-auto mx-auto my-0"
                     >
                         <a href="">View All</a>
                     </button>
@@ -643,7 +666,7 @@
                                         class="mt-[0.62rem] flex flex-col gap-[0.27rem]"
                                     >
                                         <h4
-                                            class="text-base xl:text-xl font-bold truncate"
+                                            class="text-base md:text-lg md:leading-tight lg:text-xl lg:leading-snug xl:text-xl font-bold truncate"
                                         >
                                             T-Shirt with Tape Details
                                         </h4>
@@ -672,16 +695,18 @@
                                                     alt=""
                                                 />
                                             </div>
-                                            <p class="text-xs xl:text-sm">
+                                            <p
+                                                class="text-xs md:text-sm lg:text-base xl:text-sm"
+                                            >
                                                 4.5/<span class="text-muted"
                                                     >5</span
                                                 >
                                             </p>
                                         </section>
-                                        <div class="flex gap-[0.31rem]">
-                                            <p class="text-xl font-bold">
-                                                $120
-                                            </p>
+                                        <div
+                                            class="flex product-price-group gap-[0.31rem]"
+                                        >
+                                            <p class="font-bold">$120</p>
                                         </div>
                                     </section>
                                 </article>
@@ -702,7 +727,7 @@
                                         class="mt-[0.62rem] flex flex-col gap-[0.27rem]"
                                     >
                                         <h4
-                                            class="text-base xl:text-xl font-bold truncate"
+                                            class="text-base md:text-lg md:leading-tight lg:text-xl lg:leading-snug xl:text-xl font-bold truncate"
                                         >
                                             Vertical Striped Shirt
                                         </h4>
@@ -731,7 +756,9 @@
                                                     alt=""
                                                 />
                                             </div>
-                                            <p class="text-xs xl:text-sm">
+                                            <p
+                                                class="text-xs md:text-sm lg:text-base xl:text-sm"
+                                            >
                                                 5.0/<span class="text-muted"
                                                     >5</span
                                                 >
@@ -742,8 +769,7 @@
                                         >
                                             <p class="font-bold">$212</p>
                                             <p class="origin-price">$235</p>
-                                            <span
-                                                class="badge-discount px-[0.88rem] xl:text-xs text-[0.625rem]"
+                                            <span class="badge-discount"
                                                 >-20%</span
                                             >
                                         </div>
@@ -765,7 +791,7 @@
                                         class="mt-[0.62rem] flex flex-col gap-[0.27rem]"
                                     >
                                         <h4
-                                            class="text-base xl:text-xl font-bold truncate"
+                                            class="text-base md:text-lg md:leading-tight lg:text-xl lg:leading-snug xl:text-xl font-bold truncate"
                                         >
                                             Vertical Striped Shirt
                                         </h4>
@@ -794,7 +820,9 @@
                                                     alt=""
                                                 />
                                             </div>
-                                            <p class="text-xs xl:text-sm">
+                                            <p
+                                                class="text-xs md:text-sm lg:text-base xl:text-sm"
+                                            >
                                                 5.0/<span class="text-muted"
                                                     >5</span
                                                 >
@@ -805,8 +833,7 @@
                                         >
                                             <p class="font-bold">$212</p>
                                             <p class="origin-price">$235</p>
-                                            <span
-                                                class="badge-discount px-[0.88rem] xl:text-xs text-[0.625rem]"
+                                            <span class="badge-discount"
                                                 >-20%</span
                                             >
                                         </div>
@@ -828,7 +855,7 @@
                                         class="mt-[0.62rem] flex flex-col gap-[0.27rem]"
                                     >
                                         <h4
-                                            class="text-base xl:text-xl font-bold truncate"
+                                            class="text-base md:text-lg md:leading-tight lg:text-xl lg:leading-snug xl:text-xl font-bold truncate"
                                         >
                                             T-Shirt with Tape Details
                                         </h4>
@@ -857,18 +884,18 @@
                                                     alt=""
                                                 />
                                             </div>
-                                            <p class="text-xs xl:text-sm">
+                                            <p
+                                                class="text-xs md:text-sm lg:text-base xl:text-sm"
+                                            >
                                                 4.5/<span class="text-muted"
                                                     >5</span
                                                 >
                                             </p>
                                         </section>
-                                        <div class="flex gap-[0.31rem]">
-                                            <p
-                                                class="text-xl xl:text-2xl font-bold"
-                                            >
-                                                $120
-                                            </p>
+                                        <div
+                                            class="flex product-price-group gap-[0.31rem]"
+                                        >
+                                            <p class="font-bold">$120</p>
                                         </div>
                                     </section>
                                 </article>
@@ -877,7 +904,7 @@
                     </div>
 
                     <button
-                        class="rounded-standard border w-full mt-6 border-black/10 px-[3.38rem] py-4 text-sm font-medium xl:text-base xl:mt-9 xl:block xl:w-auto mx-auto my-0"
+                        class="rounded-standard border w-full mt-6 border-black/10 px-[3.38rem] py-4 text-sm font-medium md:text-base xl:mt-9 md:block md:w-auto mx-auto my-0"
                     >
                         <a href="">View All</a>
                     </button>
@@ -887,7 +914,7 @@
                     class="mt-[3.12rem] pt-10 pb-[1.69rem] px-6 rounded-[1.25rem] bg-bg-gray flex flex-col items-center"
                 >
                     <h3
-                        class="heading-section text-center text-[2rem] leading-9 max-w-[90%] xl:text-5xl"
+                        class="heading-section text-center text-[2rem] leading-9 max-w-[90%] md:text-4xl md:leading-tight lg:text-[2.75rem] lg:leading-none xl:text-5xl"
                     >
                         BROWSE BY dress STYLE
                     </h3>
@@ -895,9 +922,7 @@
                     <div
                         class="grid grid-cols-1 gap-4 mt-7 w-full xl:grid-cols-3 xl:grid-rows-4 xl:gap-5 xl:mt-16"
                     >
-                        <article
-                            class="category-grid h-44 xl:h-72"
-                        >
+                        <article class="category-grid h-44 xl:h-72">
                             <img
                                 class="w-full h-full"
                                 src="/assets/imgs/image 11.svg"
@@ -906,7 +931,9 @@
                             <p>Casual</p>
                         </article>
 
-                        <article class="category-grid xl:col-span-2 h-44 xl:h-72">
+                        <article
+                            class="category-grid xl:col-span-2 h-44 xl:h-72"
+                        >
                             <img
                                 class="w-full h-full r"
                                 src="/assets/imgs/image 13.svg"
@@ -942,7 +969,7 @@
                 <section class="mt-12">
                     <div class="flex items-end">
                         <h3
-                            class="heading-section text-[2rem] flex-1 xl:text-5xl"
+                            class="heading-section text-[2rem] md:text-4xl md:leading-tight lg:text-[2.75rem] lg:leading-none flex-1 xl:text-5xl"
                         >
                             OUR HAPPY CUSTOMERS
                         </h3>
@@ -950,12 +977,12 @@
                             <img
                                 src="/assets/imgs/icons/arrow-left.svg"
                                 alt=""
-                                class="swiper-custom-button-prev"
+                                class="swiper-custom-button-prev cursor-pointer"
                             />
                             <img
                                 src="/assets/imgs/icons/arrow-right.svg"
                                 alt=""
-                                class="swiper-custom-button-next"
+                                class="swiper-custom-button-next cursor-pointer"
                             />
                         </div>
                     </div>
@@ -968,7 +995,7 @@
                                 <div class="flex flex-col">
                                     <div class="flex gap-1">
                                         <h4
-                                            class="text-base font-bold xl:text-xl"
+                                            class="text-base font-bold md:text-lg lg:text-xl"
                                         >
                                             Sarah M.
                                         </h4>
@@ -978,7 +1005,9 @@
                                         />
                                     </div>
 
-                                    <p class="text-muted text-sm xl:text-base">
+                                    <p
+                                        class="text-muted text-sm md:text-base md:leading-relaxed lg:leading-normal"
+                                    >
                                         "I'm blown away by the quality and style
                                         of the clothes I received from Shop.co.
                                         From casual wear to elegant dresses,
@@ -988,12 +1017,12 @@
                                 </div>
                             </article>
                             <article
-                                class="swiper-slide border-base p-6 rounded-[1.25rem]"
+                                class="swiper-slide border-base p-6 rounded-[1.25rem] h-[15rem]"
                             >
                                 <div class="flex flex-col">
                                     <div class="flex gap-1">
                                         <h4
-                                            class="text-base font-bold xl:text-xl"
+                                            class="text-base font-bold md:text-lg lg:text-xl"
                                         >
                                             Alex K.
                                         </h4>
@@ -1003,7 +1032,9 @@
                                         />
                                     </div>
 
-                                    <p class="text-muted text-sm xl:text-base">
+                                    <p
+                                        class="text-muted text-sm md:text-base md:leading-relaxed lg:leading-normal"
+                                    >
                                         "Finding clothes that align with my
                                         personal style used to be a challenge
                                         until I discovered Shop.co. The range of
@@ -1019,7 +1050,7 @@
                                 <div class="flex flex-col">
                                     <div class="flex gap-1">
                                         <h4
-                                            class="text-base font-bold xl:text-xl"
+                                            class="text-base font-bold md:text-lg lg:text-xl"
                                         >
                                             James L.
                                         </h4>
@@ -1029,7 +1060,9 @@
                                         />
                                     </div>
 
-                                    <p class="text-muted text-sm xl:text-base">
+                                    <p
+                                        class="text-muted text-sm md:text-base md:leading-relaxed lg:leading-normal"
+                                    >
                                         "As someone who's always on the lookout
                                         for unique fashion pieces, I'm thrilled
                                         to have stumbled upon Shop.co. The
@@ -1045,7 +1078,7 @@
                                 <div class="flex flex-col">
                                     <div class="flex gap-1">
                                         <h4
-                                            class="text-base font-bold xl:text-xl"
+                                            class="text-base font-bold md:text-lg lg:text-xl"
                                         >
                                             Sarah M.
                                         </h4>
@@ -1055,7 +1088,9 @@
                                         />
                                     </div>
 
-                                    <p class="text-muted text-sm xl:text-base">
+                                    <p
+                                        class="text-muted text-sm md:text-base md:leading-relaxed lg:leading-normal"
+                                    >
                                         "I'm blown away by the quality and style
                                         of the clothes I received from Shop.co.
                                         From casual wear to elegant dresses,
@@ -1072,7 +1107,7 @@
                     class="bg-black text-white pt-8 pr-[1.44rem] pb-7 pl-6 rounded-[1.25rem] flex xl:flex-row xl:justify-between flex-col gap-8 xl:px-16 xl:py-9 translate-y-1/2 -mt-[25%] md:-mt-[10%] lg:-mt-[5%] xl:-mt-0"
                 >
                     <h3
-                        class="heading-section font-bold leading-[2.1875rem] text-[2rem] xl:text-[2.5rem] xl:leading[2.8125rem] xl:max-w-[34rem]"
+                        class="heading-section leading-[2.1875rem] text-[2rem] md:text-[2.25rem] md:leading-[2.5rem] lg:text-[2.5rem] lg:leading-[2.8rem] xl:text-[2.5rem] xl:leading[2.8125rem] xl:max-w-[34rem]"
                     >
                         STAY UPTO DATE ABOUT OUR LATEST OFFERS
                     </h3>
@@ -1091,7 +1126,7 @@
                             />
                         </div>
                         <button
-                            class="rounded-standard w-full mt-3 py-3 px-4 bg-white text-black"
+                            class="rounded-standard w-full mt-3 py-3 px-4 bg-white text-black md:text-base lg:text-lg"
                         >
                             Subscribe to Newsletter
                         </button>

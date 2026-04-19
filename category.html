@@ -84,14 +84,14 @@
                 }
 
                 .product-price-group {
-                    @apply flex text-xl xl:text-2xl leading-none items-center;
+                    @apply flex text-xl md:text-2xl lg:text-[1.625rem] xl:text-2xl leading-none items-center;
 
                     & .badge-discount {
-                        @apply rounded-[3.875rem] bg-[#FF33331A] py-[0.38rem]  text-[#FF3333] text-center font-medium;
+                        @apply rounded-[3.875rem] bg-[#FF33331A] py-[0.38rem] text-[#FF3333] text-center font-medium md:text-xs lg:text-sm;
                     }
 
                     & .origin-price {
-                        @apply text-price-original font-bold line-through;
+                        @apply text-price-original font-bold line-through md:text-xl lg:text-[1.375rem];
                     }
                 }
 
@@ -171,7 +171,7 @@
         >
             <div class="flex gap-[1.16rem]">
                 <img
-                    class="xl:hidden hamburger"
+                    class="xl:hidden cursor-pointer hamburger"
                     src="/assets/imgs/icons/hamburger.svg"
                     alt=""
                 />
@@ -452,7 +452,7 @@
                             </div>
                             <section class="flex flex-col gap-5 mt-4">
                                 <div
-                                    class="text-base text-muted flex items-center justify-between "
+                                    class="text-base text-muted flex items-center justify-between"
                                 >
                                     <p>Casual</p>
                                     <img
@@ -501,7 +501,9 @@
 
                 <section class="xl:flex-4">
                     <div class="mt-3 xl:mt-0">
-                        <div class="text-2xl xl:text-[2rem] flex justify-between items-center">
+                        <div
+                            class="text-2xl xl:text-[2rem] flex justify-between items-center"
+                        >
                             <h2 class="font-bold">Casual</h2>
                             <button
                                 class="w-8 h-8 bg-bg-gray rounded-full items-center justify-center filter flex lg:hidden xl:hidden"
@@ -533,217 +535,233 @@
                     <section
                         class="mt-8 grid grid-cols-2 xl:grid-cols-3 gap-[0.87rem]"
                     >
-                        <article class="swiper-slide">
-                            <div>
-                                <img
-                                    class="product-card-img"
-                                    src="/assets/imgs/product-img-2.svg"
-                                    alt=""
-                                />
-                            </div>
+                        <a href="/product-detail.html"
+                            ><article>
+                                <div>
+                                    <img
+                                        class="product-card-img"
+                                        src="/assets/imgs/product-img-2.svg"
+                                        alt=""
+                                    />
+                                </div>
 
-                            <section
-                                class="mt-[0.62rem] flex flex-col gap-[0.27rem]"
-                            >
-                                <h4
-                                    class="text-base xl:text-xl font-bold truncate"
-                                >
-                                    Vertical Striped Shirt
-                                </h4>
                                 <section
-                                    class="flex items-center gap-[0.69rem]"
+                                    class="mt-[0.62rem] flex flex-col gap-[0.27rem]"
                                 >
-                                    <div class="flex gap-[0.28rem]">
-                                        <img
-                                            src="/assets/imgs/icons/star-rate-full.svg"
-                                            alt=""
-                                        />
-                                        <img
-                                            src="/assets/imgs/icons/star-rate-full.svg"
-                                            alt=""
-                                        />
-                                        <img
-                                            src="/assets/imgs/icons/star-rate-full.svg"
-                                            alt=""
-                                        />
-                                        <img
-                                            src="/assets/imgs/icons/star-rate-full.svg"
-                                            alt=""
-                                        />
-                                        <img
-                                            src="/assets/imgs/icons/star-rate-full.svg"
-                                            alt=""
-                                        />
-                                    </div>
-                                    <p class="text-xs xl:text-sm">
-                                        5.0/<span class="text-muted">5</span>
-                                    </p>
-                                </section>
-                                <div
-                                    class="product-price-group gap-[0.31rem] xl:gap-[0.62rem]"
-                                >
-                                    <p class="font-bold">$212</p>
-                                    <p class="origin-price">$235</p>
-                                    <span
-                                        class="badge-discount px-[0.88rem] xl:text-xs text-[0.625rem]"
-                                        >-20%</span
+                                    <h4
+                                        class="text-base md:text-lg md:leading-tight lg:text-xl lg:leading-snug xl:text-xl font-bold truncate"
                                     >
-                                </div>
-                            </section>
-                        </article>
-                        <article class="swiper-slide">
-                            <div>
-                                <img
-                                    class="product-card-img"
-                                    src="/assets/imgs/product-img.svg"
-                                    alt=""
-                                />
-                            </div>
-
-                            <section
-                                class="mt-[0.62rem] flex flex-col gap-[0.27rem]"
-                            >
-                                <h4
-                                    class="text-base xl:text-xl font-bold truncate"
-                                >
-                                    T-Shirt with Tape Details
-                                </h4>
-                                <section
-                                    class="flex items-center gap-[0.69rem]"
-                                >
-                                    <div class="flex gap-[0.28rem]">
-                                        <img
-                                            src="/assets/imgs/icons/star-rate-full.svg"
-                                            alt=""
-                                        />
-                                        <img
-                                            src="/assets/imgs/icons/star-rate-full.svg"
-                                            alt=""
-                                        />
-                                        <img
-                                            src="/assets/imgs/icons/star-rate-full.svg"
-                                            alt=""
-                                        />
-                                        <img
-                                            src="/assets/imgs/icons/star-rate-full.svg"
-                                            alt=""
-                                        />
-                                        <img
-                                            src="/assets/imgs/icons/star-rate-half.svg"
-                                            alt=""
-                                        />
+                                        Vertical Striped Shirt
+                                    </h4>
+                                    <section
+                                        class="flex items-center gap-[0.69rem]"
+                                    >
+                                        <div class="flex gap-[0.28rem]">
+                                            <img
+                                                src="/assets/imgs/icons/star-rate-full.svg"
+                                                alt=""
+                                            />
+                                            <img
+                                                src="/assets/imgs/icons/star-rate-full.svg"
+                                                alt=""
+                                            />
+                                            <img
+                                                src="/assets/imgs/icons/star-rate-full.svg"
+                                                alt=""
+                                            />
+                                            <img
+                                                src="/assets/imgs/icons/star-rate-full.svg"
+                                                alt=""
+                                            />
+                                            <img
+                                                src="/assets/imgs/icons/star-rate-full.svg"
+                                                alt=""
+                                            />
+                                        </div>
+                                        <p class="text-xs xl:text-sm">
+                                            5.0/<span class="text-muted"
+                                                >5</span
+                                            >
+                                        </p>
+                                    </section>
+                                    <div
+                                        class="product-price-group gap-[0.31rem] xl:gap-[0.62rem]"
+                                    >
+                                        <p class="font-bold">$212</p>
+                                        <p class="origin-price">$235</p>
+                                        <span
+                                            class="badge-discount px-[0.88rem] xl:text-xs text-[0.625rem]"
+                                            >-20%</span
+                                        >
                                     </div>
-                                    <p class="text-xs xl:text-sm">
-                                        4.5/<span class="text-muted">5</span>
-                                    </p>
                                 </section>
-                                <div class="flex gap-[0.31rem]">
-                                    <p class="text-xl font-bold">$120</p>
+                            </article></a
+                        >
+                        <a href="/product-detail.html"
+                            ><article>
+                                <div>
+                                    <img
+                                        class="product-card-img"
+                                        src="/assets/imgs/product-img.svg"
+                                        alt=""
+                                    />
                                 </div>
-                            </section>
-                        </article>
-                        <article class="swiper-slide">
-                            <div>
-                                <img
-                                    class="product-card-img"
-                                    src="/assets/imgs/product-img.svg"
-                                    alt=""
-                                />
-                            </div>
 
-                            <section
-                                class="mt-[0.62rem] flex flex-col gap-[0.27rem]"
-                            >
-                                <h4
-                                    class="text-base xl:text-xl font-bold truncate"
-                                >
-                                    T-Shirt with Tape Details
-                                </h4>
                                 <section
-                                    class="flex items-center gap-[0.69rem]"
+                                    class="mt-[0.62rem] flex flex-col gap-[0.27rem]"
                                 >
-                                    <div class="flex gap-[0.28rem]">
-                                        <img
-                                            src="/assets/imgs/icons/star-rate-full.svg"
-                                            alt=""
-                                        />
-                                        <img
-                                            src="/assets/imgs/icons/star-rate-full.svg"
-                                            alt=""
-                                        />
-                                        <img
-                                            src="/assets/imgs/icons/star-rate-full.svg"
-                                            alt=""
-                                        />
-                                        <img
-                                            src="/assets/imgs/icons/star-rate-full.svg"
-                                            alt=""
-                                        />
-                                        <img
-                                            src="/assets/imgs/icons/star-rate-half.svg"
-                                            alt=""
-                                        />
+                                    <h4
+                                        class="text-base md:text-lg md:leading-tight lg:text-xl lg:leading-snug xl:text-xl font-bold truncate"
+                                    >
+                                        T-Shirt with Tape Details
+                                    </h4>
+                                    <section
+                                        class="flex items-center gap-[0.69rem]"
+                                    >
+                                        <div class="flex gap-[0.28rem]">
+                                            <img
+                                                src="/assets/imgs/icons/star-rate-full.svg"
+                                                alt=""
+                                            />
+                                            <img
+                                                src="/assets/imgs/icons/star-rate-full.svg"
+                                                alt=""
+                                            />
+                                            <img
+                                                src="/assets/imgs/icons/star-rate-full.svg"
+                                                alt=""
+                                            />
+                                            <img
+                                                src="/assets/imgs/icons/star-rate-full.svg"
+                                                alt=""
+                                            />
+                                            <img
+                                                src="/assets/imgs/icons/star-rate-half.svg"
+                                                alt=""
+                                            />
+                                        </div>
+                                        <p class="text-xs xl:text-sm">
+                                            4.5/<span class="text-muted"
+                                                >5</span
+                                            >
+                                        </p>
+                                    </section>
+                                    <div class="flex gap-[0.31rem]">
+                                        <p class="text-xl font-bold">$120</p>
                                     </div>
-                                    <p class="text-xs xl:text-sm">
-                                        4.5/<span class="text-muted">5</span>
-                                    </p>
                                 </section>
-                                <div class="flex gap-[0.31rem]">
-                                    <p class="text-xl font-bold">$120</p>
+                            </article></a
+                        >
+                        <a href="/product-detail.html">
+                            <article>
+                                <div>
+                                    <img
+                                        class="product-card-img"
+                                        src="/assets/imgs/product-img.svg"
+                                        alt=""
+                                    />
                                 </div>
-                            </section>
-                        </article>
-                        <article class="swiper-slide">
-                            <div>
-                                <img
-                                    class="product-card-img"
-                                    src="/assets/imgs/product-img.svg"
-                                    alt=""
-                                />
-                            </div>
 
-                            <section
-                                class="mt-[0.62rem] flex flex-col gap-[0.27rem]"
-                            >
-                                <h4
-                                    class="text-base xl:text-xl font-bold truncate"
-                                >
-                                    T-Shirt with Tape Details
-                                </h4>
                                 <section
-                                    class="flex items-center gap-[0.69rem]"
+                                    class="mt-[0.62rem] flex flex-col gap-[0.27rem]"
                                 >
-                                    <div class="flex gap-[0.28rem]">
-                                        <img
-                                            src="/assets/imgs/icons/star-rate-full.svg"
-                                            alt=""
-                                        />
-                                        <img
-                                            src="/assets/imgs/icons/star-rate-full.svg"
-                                            alt=""
-                                        />
-                                        <img
-                                            src="/assets/imgs/icons/star-rate-full.svg"
-                                            alt=""
-                                        />
-                                        <img
-                                            src="/assets/imgs/icons/star-rate-full.svg"
-                                            alt=""
-                                        />
-                                        <img
-                                            src="/assets/imgs/icons/star-rate-half.svg"
-                                            alt=""
-                                        />
+                                    <h4
+                                        class="text-base md:text-lg md:leading-tight lg:text-xl lg:leading-snug xl:text-xl font-bold truncate"
+                                    >
+                                        T-Shirt with Tape Details
+                                    </h4>
+                                    <section
+                                        class="flex items-center gap-[0.69rem]"
+                                    >
+                                        <div class="flex gap-[0.28rem]">
+                                            <img
+                                                src="/assets/imgs/icons/star-rate-full.svg"
+                                                alt=""
+                                            />
+                                            <img
+                                                src="/assets/imgs/icons/star-rate-full.svg"
+                                                alt=""
+                                            />
+                                            <img
+                                                src="/assets/imgs/icons/star-rate-full.svg"
+                                                alt=""
+                                            />
+                                            <img
+                                                src="/assets/imgs/icons/star-rate-full.svg"
+                                                alt=""
+                                            />
+                                            <img
+                                                src="/assets/imgs/icons/star-rate-half.svg"
+                                                alt=""
+                                            />
+                                        </div>
+                                        <p class="text-xs xl:text-sm">
+                                            4.5/<span class="text-muted"
+                                                >5</span
+                                            >
+                                        </p>
+                                    </section>
+                                    <div class="flex gap-[0.31rem]">
+                                        <p class="text-xl font-bold">$120</p>
                                     </div>
-                                    <p class="text-xs xl:text-sm">
-                                        4.5/<span class="text-muted">5</span>
-                                    </p>
                                 </section>
-                                <div class="flex gap-[0.31rem]">
-                                    <p class="text-xl font-bold">$120</p>
+                            </article></a
+                        >
+                        <a href="/product-detail.html">
+                            <article>
+                                <div>
+                                    <img
+                                        class="product-card-img"
+                                        src="/assets/imgs/product-img.svg"
+                                        alt=""
+                                    />
                                 </div>
-                            </section>
-                        </article>
+
+                                <section
+                                    class="mt-[0.62rem] flex flex-col gap-[0.27rem]"
+                                >
+                                    <h4
+                                        class="text-base md:text-lg md:leading-tight lg:text-xl lg:leading-snug xl:text-xl font-bold truncate"
+                                    >
+                                        T-Shirt with Tape Details
+                                    </h4>
+                                    <section
+                                        class="flex items-center gap-[0.69rem]"
+                                    >
+                                        <div class="flex gap-[0.28rem]">
+                                            <img
+                                                src="/assets/imgs/icons/star-rate-full.svg"
+                                                alt=""
+                                            />
+                                            <img
+                                                src="/assets/imgs/icons/star-rate-full.svg"
+                                                alt=""
+                                            />
+                                            <img
+                                                src="/assets/imgs/icons/star-rate-full.svg"
+                                                alt=""
+                                            />
+                                            <img
+                                                src="/assets/imgs/icons/star-rate-full.svg"
+                                                alt=""
+                                            />
+                                            <img
+                                                src="/assets/imgs/icons/star-rate-half.svg"
+                                                alt=""
+                                            />
+                                        </div>
+                                        <p class="text-xs xl:text-sm">
+                                            4.5/<span class="text-muted"
+                                                >5</span
+                                            >
+                                        </p>
+                                    </section>
+                                    <div class="flex gap-[0.31rem]">
+                                        <p class="text-xl font-bold">$120</p>
+                                    </div>
+                                </section>
+                            </article></a
+                        >
                     </section>
                 </section>
             </div>
@@ -805,7 +823,7 @@
                 class="bg-black text-white pt-8 pr-[1.44rem] pb-7 pl-6 rounded-[1.25rem] flex xl:flex-row xl:justify-between flex-col gap-8 xl:px-16 xl:py-9 translate-y-1/2 -mt-[25%] md:-mt-[10%] lg:-mt-[5%] xl:-mt-0"
             >
                 <h3
-                    class="heading-section font-bold leading-[2.1875rem] text-[2rem] xl:text-[2.5rem] xl:leading[2.8125rem] xl:max-w-[34rem]"
+                    class="heading-section leading-[2.1875rem] text-[2rem] md:text-[2.25rem] md:leading-[2.5rem] lg:text-[2.5rem] lg:leading-[2.8rem] xl:text-[2.5rem] xl:leading[2.8125rem] xl:max-w-[34rem]"
                 >
                     STAY UPTO DATE ABOUT OUR LATEST OFFERS
                 </h3>
@@ -821,7 +839,7 @@
                         />
                     </div>
                     <button
-                        class="rounded-standard w-full mt-3 py-3 px-4 bg-white text-black"
+                        class="rounded-standard w-full mt-3 py-3 px-4 bg-white text-black md:text-base lg:text-lg"
                     >
                         Subscribe to Newsletter
                     </button>
